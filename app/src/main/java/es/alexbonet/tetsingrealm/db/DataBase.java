@@ -16,7 +16,12 @@ public class DataBase {
         if (con == null ) {
             Realm.init(context);
             String name = "nomDb5";
-            RealmConfiguration config = new RealmConfiguration.Builder().name(name).build();
+            RealmConfiguration config = new RealmConfiguration.Builder()
+                    .schemaVersion(1)
+                    .deleteRealmIfMigrationNeeded() //
+                    .name(name)
+                    .build();
+            Realm.setDefaultConfiguration(config);
             con = Realm.getInstance(config);
         }
         return con;

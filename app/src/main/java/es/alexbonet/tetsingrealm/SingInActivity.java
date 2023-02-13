@@ -51,11 +51,11 @@ public class SingInActivity extends AppCompatActivity {
 
     private void registrar() {
         String dni = inputDni.getText().toString();
-        String nom = inputDni.getText().toString();
-        String ape = inputDni.getText().toString();
-        String user = inputDni.getText().toString();
-        String pswd = inputDni.getText().toString();
-        String cpswd = inputDni.getText().toString();
+        String nom = inputNombre.getText().toString();
+        String ape = inputApell.getText().toString();
+        String user = inputUserName.getText().toString();
+        String pswd = inputPswd.getText().toString();
+        String cpswd = inputConfPswd.getText().toString();
 
         if (dni.isEmpty() || nom.isEmpty() || ape.isEmpty() || user.isEmpty() || pswd.isEmpty() || cpswd.isEmpty()) { // QUE NO HAYA NINGUN CAMPO VACIO
             Toast.makeText(this, "CAMPOS VACIOS", Toast.LENGTH_SHORT).show();

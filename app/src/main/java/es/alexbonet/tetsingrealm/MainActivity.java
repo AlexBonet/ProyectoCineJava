@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.db.DataBase;
-import es.alexbonet.tetsingrealm.model.Empleado;
 import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 

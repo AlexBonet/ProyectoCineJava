@@ -27,9 +27,9 @@ public class UserController {
         Usuario u = usuario;
         u.setId(UUID.randomUUID().toString());
 
-        connect.executeTransaction(transactionRealm -> {
-            transactionRealm.insert(u);
-        });
+        connect.beginTransaction();
+        connect.copyToRealm(u);
+        connect.commitTransaction();
     }
 
     public void deleteUser(Realm connect){
