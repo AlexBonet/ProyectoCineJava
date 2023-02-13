@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SingInActivity">
+
+    <TextView
+        android:id="@+id/textViewRe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Crea una cuenta"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputReDni"
+        app:layout_constraintEnd_toEndOf="@+id/inputReDni"
+        app:layout_constraintStart_toStartOf="@+id/inputReDni"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputReDni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="DNI"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/inputReNombre"
+        app:layout_constraintEnd_toEndOf="@+id/inputReNombre"
+        app:layout_constraintStart_toStartOf="@+id/inputReNombre" />
+
+    <EditText
+        android:id="@+id/inputReNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/inputReApellido"
+        app:layout_constraintEnd_toEndOf="@+id/inputReApellido"
+        app:layout_constraintStart_toStartOf="@+id/inputReApellido" />
+
+    <EditText
+        android:id="@+id/inputReApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Apellidos"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/inputReUserName"
+        app:layout_constraintEnd_toEndOf="@+id/inputReUserName"
+        app:layout_constraintStart_toStartOf="@+id/inputReUserName" />
+
+    <EditText
+        android:id="@+id/inputReUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre de usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputRePswd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputReUserName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputReUserName"
+        app:layout_constraintTop_toBottomOf="@+id/inputReUserName" />
+
+    <EditText
+        android:id="@+id/inputReConfirmPswd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Confirmar contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputRePswd"
+        app:layout_constraintStart_toStartOf="@+id/inputRePswd"
+        app:layout_constraintTop_toBottomOf="@+id/inputRePswd" />
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Registrarse"
+        app:layout_constraintEnd_toEndOf="@+id/inputReConfirmPswd"
+        app:layout_constraintStart_toStartOf="@+id/inputReConfirmPswd"
+        app:layout_constraintTop_toBottomOf="@+id/inputReConfirmPswd" />
+
+    <Button
+        android:id="@+id/btnIrALogIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Iniciar sesion"
+        app:layout_constraintEnd_toEndOf="@+id/inputReConfirmPswd"
+        app:layout_constraintStart_toStartOf="@+id/inputReConfirmPswd"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
+</androidx.constraintlayout.widget.ConstraintLayout>
