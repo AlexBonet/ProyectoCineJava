@@ -1,5 +1,7 @@
 package es.alexbonet.tetsingrealm.model;
 
+import androidx.annotation.NonNull;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -8,7 +10,7 @@ public class Sesion extends RealmObject {
     private String id_sesion;
     private int num_sala;
     private String titulo_peli;
-    private String hora_empieza;
+    private String hora_empieza; //TODO DIA DE LA ENTRADA O ALGO
     private int ocupacion; // duracion de la pelicula + 10
 
     public Sesion(int num_sala, String titulo_peli, String hora_empieza, int ocupacion) {
@@ -67,5 +69,19 @@ public class Sesion extends RealmObject {
 
     public void setOcupacion(int ocupacion) {
         this.ocupacion = ocupacion;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String str = this.hora_empieza + " - ";
+        if (this.num_sala != 6){
+            str += "4DX SALA: " + num_sala;
+        } else if (this.num_sala == 4 || this.num_sala == 5) {
+            str += "3D SALA: " + num_sala;
+        } else {
+            str += "2D SALA; " + num_sala;
+        }
+        return str;
     }
 }

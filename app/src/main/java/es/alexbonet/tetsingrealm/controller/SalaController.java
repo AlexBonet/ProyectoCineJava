@@ -12,6 +12,10 @@ public class SalaController {
         return salas;
     }
 
+    public Sala getSala(Realm connect, int numsala){
+        return connect.where(Sala.class).equalTo("num_sala",numsala).findFirst();
+    }
+
     public void createSala(Realm connect, Sala film){
         Sala s = film;
         s.setId_sala(UUID.randomUUID().toString());

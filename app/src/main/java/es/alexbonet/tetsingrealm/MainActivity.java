@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import es.alexbonet.tetsingrealm.RecyclerView.RVAdapter;
+import es.alexbonet.tetsingrealm.RecyclerView.FilmsRVAdapter;
 import es.alexbonet.tetsingrealm.controller.FilmController;
 import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.db.DataBase;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Usuario u;
     private Realm connect;
     private RecyclerView recyclerView;
-    private RVAdapter rvAdapter;
+    private FilmsRVAdapter filmsRvAdapter;
     private List<Film> filmList;
 
     @SuppressLint("MissingInflatedId")
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //filmList = fc.getAllFilms(connect);
         recyclerView = findViewById(R.id.rvMainCartelera);
 
-        rvAdapter = new RVAdapter(this, filmList);
-        rvAdapter.setOnClickListener(this);
-        recyclerView.setAdapter(rvAdapter);
+        filmsRvAdapter = new FilmsRVAdapter(this, filmList);
+        filmsRvAdapter.setOnClickListener(this);
+        recyclerView.setAdapter(filmsRvAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -109,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        int posi = recyclerView.getChildAdapterPosition(view);
+        //username = getIntent().getExtras().getString("user");
+        Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
+        intent.putExtra("titulo",filmList.get(posi).getTitulo());
+        //intent.putExtra("user", username);
+        startActivity(intent);
     }
 }

@@ -13,9 +13,9 @@ public class FilmController {
         return films;
     }
 
-    public RealmResults<Film> getFilms(Realm connect, String id_film){
-        RealmResults<Film> films = connect.where(Film.class).equalTo("id_film",id_film).findAll();
-        return films;
+    public Film getFilmByName(Realm connect, String titulo){
+        Film film = connect.where(Film.class).equalTo("titulo",titulo).findFirst();
+        return film;
     }
 
     public RealmResults<Film> getFilmsEnCartelera(Realm connect){

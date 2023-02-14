@@ -15,26 +15,26 @@ import java.util.List;
 import es.alexbonet.tetsingrealm.R;
 import es.alexbonet.tetsingrealm.model.Film;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder>{
+public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHolder>{
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
     private List<Film> pelisCartrelera;
 
-    public RVAdapter(Context context, List<Film> pelisCartrelera){
+    public FilmsRVAdapter(Context context, List<Film> pelisCartrelera){
         this.pelisCartrelera = pelisCartrelera;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
     @Override
-    public RVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FilmsRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.film_view_cartelera,parent,false);
         view.setOnClickListener(onClickListener);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RVAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FilmsRVAdapter.ViewHolder holder, int position) {
         Film f = pelisCartrelera.get(position);
         holder.titulo.setText(f.getTitulo());
         holder.genero.setText(f.getGenero());
