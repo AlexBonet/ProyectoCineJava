@@ -1,8 +1,10 @@
 package es.alexbonet.tetsingrealm;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,7 +22,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText inputDni, inputNombre, inputApell, inputUserName, inputPswd, inputConfPswd;
     private Button btnRegist, btnAECancelar;
     private Realm connect;
-    private UserController userController = new UserController();
+    private final UserController userController = new UserController();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -67,9 +69,28 @@ public class AddUserActivity extends AppCompatActivity {
             } else {
                 if (pswd.equals(cpswd)) { // SI LAS CONTRASEÑAS COINCIDEN
                     userController.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.EMPLEADO.getString())); // CREA EL USUARIO
-                    Intent intent = new Intent(this,MainActivity.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Usuario creado correctamente");
+                    // Add the buttons
+                    builder.setPositiveButton("Iniciar sesión como " + user, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
+                    });
+                    builder.setNegativeButton("Continuar como ADMIN", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("user", "admin");
+                            startActivity(intent);
+                        }
+                    });
+                    // Create the AlertDialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
                 } else {
                     Toast.makeText(this, "Las CONTRASEÑAS no coinciden", Toast.LENGTH_SHORT).show();
                 }

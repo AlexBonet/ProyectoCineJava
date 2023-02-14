@@ -22,7 +22,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText inputUser, inputPswd;
     private Button btnLogIn, btnCrearCuenta;
     private Realm connect;
-    private UserController userController = new UserController();
+    private final UserController userController = new UserController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +38,14 @@ public class LogInActivity extends AppCompatActivity {
 
         long cuantos = connect.where(Usuario.class).count();
         if (cuantos == 0){
-            try {
-                Usuario u = new Usuario(
-                        UUID.randomUUID().toString(),
-                        "DNIADMIN",
-                        "admin",
-                        "admin",
-                        "admin",
-                        "admin",
-                        UserType.ADMINISTRADOR.toString()
-                );
-                connect.beginTransaction();
-                connect.copyToRealm(u);
-                connect.commitTransaction();
-            }catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
-            }
+            userController.createUser(connect, new Usuario(
+                    UUID.randomUUID().toString(),
+                    "DNIADMIN",
+                    "admin",
+                    "admin",
+                    "admin",
+                    "admin",
+                    UserType.ADMINISTRADOR.toString()));
         }
 
         btnLogIn.setOnClickListener(view -> {
