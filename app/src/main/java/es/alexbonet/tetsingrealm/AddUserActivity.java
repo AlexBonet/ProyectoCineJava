@@ -15,10 +15,10 @@ import es.alexbonet.tetsingrealm.model.UserType;
 import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
-public class SingInActivity extends AppCompatActivity {
+public class AddUserActivity extends AppCompatActivity {
 
     private EditText inputDni, inputNombre, inputApell, inputUserName, inputPswd, inputConfPswd;
-    private Button btnRegist, btnIrLogIn;
+    private Button btnRegist, btnAECancelar;
     private Realm connect;
     private UserController userController = new UserController();
 
@@ -26,21 +26,21 @@ public class SingInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sing_in);
+        setContentView(R.layout.activity_add_user);
 
         connect = DataBase.getInstance().conectar(this);
 
-        inputDni = findViewById(R.id.inputReDni);
-        inputNombre = findViewById(R.id.inputReNombre);
-        inputApell = findViewById(R.id.inputReApellido);
-        inputUserName = findViewById(R.id.inputReUserName);
-        inputPswd = findViewById(R.id.inputRePswd);
-        inputConfPswd = findViewById(R.id.inputReConfirmPswd);
-        btnRegist = findViewById(R.id.btnRegistrarse);
-        btnIrLogIn = findViewById(R.id.btnIrALogIn);
+        inputDni = findViewById(R.id.inputAEDni);
+        inputNombre = findViewById(R.id.inputAENombre);
+        inputApell = findViewById(R.id.inputAEApellido);
+        inputUserName = findViewById(R.id.inputAEUserName);
+        inputPswd = findViewById(R.id.inputAEPswd);
+        inputConfPswd = findViewById(R.id.inputAEConfirmPswd);
+        btnRegist = findViewById(R.id.btnAERegistrar);
+        btnAECancelar = findViewById(R.id.btnAECancelar);
 
-        btnIrLogIn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, LogInActivity.class);
+        btnAECancelar.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
 
@@ -66,8 +66,7 @@ public class SingInActivity extends AppCompatActivity {
                 Toast.makeText(this, "El DNI del usuario ya existe", Toast.LENGTH_SHORT).show();
             } else {
                 if (pswd.equals(cpswd)) { // SI LAS CONTRASEÑAS COINCIDEN
-                    //TODO PETA
-                    userController.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.CLIENTE.getString())); // CREA EL USUARIO
+                    userController.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.EMPLEADO.getString())); // CREA EL USUARIO
                     Intent intent = new Intent(this,MainActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
