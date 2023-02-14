@@ -36,6 +36,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull RVAdapter.ViewHolder holder, int position) {
         Film f = pelisCartrelera.get(position);
+        holder.titulo.setText(f.getTitulo());
+        holder.genero.setText(f.getGenero());
     }
 
     @Override

@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/rvMainImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_gatoBotas_foreground" />
-
     <TextView
         android:id="@+id/rvMainTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="EL GATO CON BOTAS: EL ÚLTIMO DESEO "
         android:textAlignment="center"
@@ -35,8 +24,22 @@
         android:id="@+id/rvMainGenero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Genero: Animacion"
+        app:layout_constraintBottom_toBottomOf="@+id/rvMainImg"
         app:layout_constraintEnd_toEndOf="@+id/rvMainTitulo"
-        app:layout_constraintStart_toStartOf="@+id/rvMainTitulo"
-        tools:layout_editor_absoluteY="95dp" />
+        app:layout_constraintStart_toStartOf="@+id/rvMainTitulo" />
+
+    <ImageView
+        android:id="@+id/rvMainImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_gato_botas_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,12 +10,14 @@ import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
 public class IniciarDB {
-    private UserController userController;
-    private FilmController filmController;
+    private final UserController userController;
+    private final FilmController filmController;
     //MES CONTROLERS
 
 
     public IniciarDB() {
+        userController = new UserController();
+        filmController = new FilmController();
     }
 
     public void init(Realm connect){

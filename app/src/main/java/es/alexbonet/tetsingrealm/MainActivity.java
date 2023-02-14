@@ -14,10 +14,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import es.alexbonet.tetsingrealm.RecyclerView.RVAdapter;
 import es.alexbonet.tetsingrealm.controller.FilmController;
 import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.db.DataBase;
+import es.alexbonet.tetsingrealm.model.Film;
+import es.alexbonet.tetsingrealm.model.UserType;
 import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Realm connect;
     private RecyclerView recyclerView;
     private RVAdapter rvAdapter;
+    private List<Film> filmList;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,30 +47,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         connect = DataBase.getInstance().conectar(this);
 
         textView = findViewById(R.id.textView);
-
         userName = getIntent().getExtras().getString("user");
 
-        if (userName != null){
-            textView.setText("HOLA " + userName);
-            u = uc.getUser(connect, userName);
-        }
 
         //RECYCLERVIEW
+        filmList = fc.getFilmsEnCartelera(connect);
+        //filmList = fc.getAllFilms(connect);
         recyclerView = findViewById(R.id.rvMainCartelera);
 
-        rvAdapter = new RVAdapter(this, fc.getFilmsEnCartelera(connect));
+        rvAdapter = new RVAdapter(this, filmList);
         rvAdapter.setOnClickListener(this);
         recyclerView.setAdapter(rvAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        if (userName != null){
+            u = uc.getUser(connect, userName);
+            textView.setText("HOLA " + userName + " -- " + filmList.size());
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_admin, menu);
-        return super.onCreateOptionsMenu(menu);
+        if (u.getTipo().equals(UserType.ADMINISTRADOR.getString())){
+            getMenuInflater().inflate(R.menu.menu_admin, menu);
+            return super.onCreateOptionsMenu(menu);
+        } else if (u.getTipo().equals(UserType.EMPLEADO.getString())){
+            getMenuInflater().inflate(R.menu.menu_emple, menu);
+            return super.onCreateOptionsMenu(menu);
+        } else if (u.getTipo().equals(UserType.CLIENTE.getString())){
+            getMenuInflater().inflate(R.menu.menu_client, menu);
+            return super.onCreateOptionsMenu(menu);
+        } else {
+            return super.onCreateOptionsMenu(menu);
+        }
     }
 
     @Override
