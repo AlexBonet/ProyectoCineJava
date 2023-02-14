@@ -32,6 +32,7 @@ public class FilmController {
         connect.commitTransaction();
     }
 
+    //TODO
     public void setOutCartelera(Realm connect, String id, boolean enCartelera){
         connect.executeTransaction( transactionRealm -> {
             Film innerOtherTask = transactionRealm.where(Film.class).equalTo("_id", id).findFirst();

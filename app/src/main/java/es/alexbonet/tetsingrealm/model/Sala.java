@@ -9,21 +9,21 @@ public class Sala extends RealmObject {
     private int num_sala;
     private int filas;
     private int columnas;
-    private String tipo;
+    private String tipo_sala;
 
-    public Sala(String id_sala, int num_sala, int filas, int columnas, String tipo) {
+    public Sala(String id_sala, int num_sala, int filas, int columnas, String tipo_sala) {
         this.id_sala = id_sala;
         this.num_sala = num_sala;
         this.filas = filas;
         this.columnas = columnas;
-        this.tipo = tipo;
+        this.tipo_sala = tipo_sala;
     }
 
-    public Sala(int num_sala, int filas, int columnas, String tipo) {
+    public Sala(int num_sala, int filas, int columnas, String tipo_sala) {
         this.num_sala = num_sala;
         this.filas = filas;
         this.columnas = columnas;
-        this.tipo = tipo;
+        this.tipo_sala = tipo_sala;
     }
 
     public Sala() {
@@ -61,11 +61,11 @@ public class Sala extends RealmObject {
         this.columnas = columnas;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipo_sala() {
+        return tipo_sala;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo_sala(String tipo_sala) {
+        this.tipo_sala = tipo_sala;
     }
 }
