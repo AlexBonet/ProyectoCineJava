@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FilmsRVAdapter filmsRvAdapter;
     private List<Film> filmList;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         connect = DataBase.getInstance().conectar(this);
 
         textView = findViewById(R.id.textView);
-        userName = getIntent().getExtras().getString("user");
-
+        userName = getIntent().getExtras().getString("user"); //TODO DISAR ESTE EN EL FINAL
+        //userName = "admin";
 
         //RECYCLERVIEW
         filmList = fc.getFilmsEnCartelera(connect);
-        //filmList = fc.getAllFilms(connect);
         recyclerView = findViewById(R.id.rvMainCartelera);
 
         filmsRvAdapter = new FilmsRVAdapter(this, filmList);
@@ -62,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        //OBTENER USUARIO
         if (userName != null){
             u = uc.getUser(connect, userName);
             textView.setText("HOLA " + userName + " -- " + filmList.size());
@@ -104,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override

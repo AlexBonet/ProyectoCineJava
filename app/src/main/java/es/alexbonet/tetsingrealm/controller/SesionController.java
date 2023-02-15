@@ -19,15 +19,6 @@ public class SesionController {
         return salas;
     }
 
-    public CharSequence[] getAllSesionFromAFilmToString(Realm connect, String titulo){
-        RealmResults<Sesion> ssio = connect.where(Sesion.class).equalTo("titulo_peli",titulo).findAll();
-        CharSequence[] sesiones = new CharSequence[0];
-        for (int i = 0; i < ssio.size()-1; i++) {
-            sesiones[i] = ssio.get(i).toString();
-        }
-        return sesiones;
-    }
-
     public void createSesion(Realm connect, Sesion sesion){
         Sesion s = sesion;
         s.setId_sesion(UUID.randomUUID().toString());

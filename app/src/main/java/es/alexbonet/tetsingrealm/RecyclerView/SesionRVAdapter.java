@@ -23,35 +23,34 @@ public class SesionRVAdapter extends RecyclerView.Adapter<SesionRVAdapter.ViewHo
     private Realm connect;
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
-    private List<Sesion> pelisCartrelera;
+    private List<Sesion> sesionList;
 
-    public SesionRVAdapter(Context context, List<Sesion> pelisCartrelera){
-        this.pelisCartrelera = pelisCartrelera;
+    public SesionRVAdapter(Context context, List<Sesion> sesionList){
+        this.sesionList = sesionList;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
     @Override
     public SesionRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.film_view_cartelera,parent,false);
+        View view = inflater.inflate(R.layout.sesion_view,parent,false);
         view.setOnClickListener(onClickListener);
         return new SesionRVAdapter.ViewHolder(view);
     }
 
-    @Override
+    @Override //TODO PETA; NO FICA LA HORA
     public void onBindViewHolder(@NonNull SesionRVAdapter.ViewHolder holder, int position) {
         connect = DataBase.getInstance().conectar(this.inflater.getContext());
-        Sesion s = pelisCartrelera.get(position);
+        Sesion s = sesionList.get(position);
         holder.hora.setText(s.getHora_empieza());
-        holder.numsala.setText(s.getNum_sala());
+        holder.numsala.setText("Sala: " + s.getNum_sala());
         holder.tipsala.setText(sl.getSala(connect,s.getNum_sala()).getTipo_sala());
     }
 
     @Override
     public int getItemCount() {
-        return pelisCartrelera.size();
+        return sesionList.size();
     }
-
     public void setOnClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }

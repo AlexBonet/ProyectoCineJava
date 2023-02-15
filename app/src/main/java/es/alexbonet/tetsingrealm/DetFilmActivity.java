@@ -60,8 +60,8 @@ public class DetFilmActivity extends AppCompatActivity {
 
         btnSesions.setOnClickListener(view -> {
             Intent intent = new Intent(this, CalendarActivity.class);
-            //TODO putExtra
-            intent.putExtra("film", film);
+            //TODO putExtra?? yo crec q pasant el ttulo de la peli bé
+            intent.putExtra("film", tituloFrom);
             startActivity(intent);
         });
 

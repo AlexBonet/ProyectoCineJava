@@ -1,7 +1,7 @@
 package es.alexbonet.tetsingrealm.model;
 
 public enum SalaType {
-    NORMAL("NORMAL(2D)"), TRESD("3D"), CUATRODX("4DX");
+    NORMAL("2D"), TRESD("3D"), CUATRODX("4DX");
 
     private final String string;
 
