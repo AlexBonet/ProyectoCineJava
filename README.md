@@ -2,9 +2,11 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 15/02/2023
-  - en el calendari vore com agafar el dia y pasarlo a sesiones
-  - acabar tot lo de la vista de sesiones el recyler view
-  - pasar de la vista de una peli a vore el calendari
+  - añadir pelicules
+  - BOTON DE COMPRAR ENTRADA DEL DIA || o que el boton de ver sesiones duga a les sesions posant el dia de hui ??
+  - deshabilitar que en el calendari puga agafar dies del pasat???
+  - PREGUNTAR A ALBA: SI SE COMPRA LA ENTRADA PER AL DIA O SE POT COMPRAR PER A UN ALTRE DIA (depen de esto fem els de dalt)
+  - crear activity de sala per elegir butaca
   
 MES COSES:
   - PASAR ELEGIR UNA SESION Y MOSTRE LA SALA y te més coses
