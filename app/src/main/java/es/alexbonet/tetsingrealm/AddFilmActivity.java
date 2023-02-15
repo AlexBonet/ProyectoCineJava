@@ -73,7 +73,7 @@ public class AddFilmActivity extends AppCompatActivity {
                     // Add the buttons
                     builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            fc.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat));
+                            fc.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004169/0000006071/Miki_Dkai:_Cassalla_Festes_i_Humor..._.jpg"));
                             /*
                             inTitulo.setText(null);
                             inDescr.setText(null);

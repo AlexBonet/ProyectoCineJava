@@ -14,26 +14,29 @@ public class Film extends RealmObject implements Serializable {
     private int edad_min;
     private String genero; //POT SER UN ENUM
     private boolean en_cartelera; //true en cartela, false fuera de cartelera
+    private String urlImage;
 
     public Film(){}
 
-    public Film(String id_film, String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_carteleta) {
+    public Film(String id_film, String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_cartelera, String urlImage) {
         this.id_film = id_film;
         this.titulo = titulo;
         this.descrip = descrip;
         this.duracion = duracion;
         this.edad_min = edad_min;
         this.genero = genero;
-        this.en_cartelera = en_carteleta;
+        this.en_cartelera = en_cartelera;
+        this.urlImage = urlImage;
     }
 
-    public Film(String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_carteleta) {
+    public Film(String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_cartelera, String urlImage) {
         this.titulo = titulo;
         this.descrip = descrip;
         this.duracion = duracion;
         this.edad_min = edad_min;
         this.genero = genero;
-        this.en_cartelera = en_carteleta;
+        this.en_cartelera = en_cartelera;
+        this.urlImage = urlImage;
     }
 
     public String getId_film() {
@@ -90,5 +93,13 @@ public class Film extends RealmObject implements Serializable {
 
     public void setEn_cartelera(boolean en_cartelera) {
         this.en_cartelera = en_cartelera;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

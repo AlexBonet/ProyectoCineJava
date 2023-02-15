@@ -43,12 +43,12 @@ public class IniciarDB {
 
         //    public Film(String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_carteleta) {
         Film [] films = new Film[]{
-                new Film("Avatar 2", "Avatar 2", 192, 12, "Aventura", true),
-                new Film("El gato con botas 2", "El gato con botas 2", 102, 7, "Amimacion", true),
-                new Film("EL PEOR VECINO DEL MUNDO", "Un venino muy malo", 125, 12, "Comedia", true),
-                new Film("ASTÉRIX Y OBÉLIX: EL REINO MEDIO", "ASTÉRIX Y OBÉLIX", 111, 7, "Comedia", true),
-                new Film("LA BALLENA", "(THE WHALE)", 117, 16, "Drama", true),
-                new Film("TADEO JONES 3. LA TABLA ESMERALDA", "TADEO JONES 3", 89, 0, "Animacion", false)
+                new Film("Avatar 2", "Avatar 2", 192, 12, "Aventura", true, "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00003725/0000005757/Avatar:_El_Sentido_del_Agua.jpg"),
+                new Film("El gato con botas 2", "El gato con botas 2", 102, 7, "Amimacion", true,"https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00003822/0000005786/El_Gato_con_Botas:_El_%C3%9Altimo_Deseo.jpg"),
+                new Film("EL PEOR VECINO DEL MUNDO", "Un venino muy malo", 125, 12, "Comedia", true, "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004057/0000005405/Modelo_77.jpg"),
+                new Film("ASTÉRIX Y OBÉLIX: EL REINO MEDIO", "ASTÉRIX Y OBÉLIX", 111, 7, "Comedia", true,"https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004249/0000006077/Ast%C3%A9rix_y_Ob%C3%A9lix:_El_Reino_Medio.jpg"),
+                new Film("LA BALLENA", "(THE WHALE)", 117, 16, "Drama", true, "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004244/0000006009/La_Ballena_(The_Whale).jpg"),
+                new Film("TADEO JONES 3. LA TABLA ESMERALDA", "TADEO JONES 3", 89, 0, "Animacion", false,"https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004246/0000006033/El_Asombroso_Mauricio.jpg")
         };
         for (Film f : films) {
             filmController.createFilm(connect, f);

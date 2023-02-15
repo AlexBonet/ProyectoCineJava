@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.R;
@@ -37,7 +39,9 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
     public void onBindViewHolder(@NonNull FilmsRVAdapter.ViewHolder holder, int position) {
         Film f = pelisCartrelera.get(position);
         holder.titulo.setText(f.getTitulo());
-        holder.genero.setText(f.getGenero());
+        holder.genero.setText("Genero: " + f.getGenero());
+        holder.edad.setText("Edad recomendad: +" + String.valueOf(f.getEdad_min()));
+        Picasso.get().load(f.getUrlImage()).into(holder.img);
     }
 
     @Override
@@ -52,12 +56,14 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView titulo;
         TextView genero;
+        TextView edad;
         ImageView img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.rvMainTitulo);
             genero = itemView.findViewById(R.id.rvMainGenero);
+            edad = itemView.findViewById(R.id.rvMainEdadmin);
             img = itemView.findViewById(R.id.rvMainImg);
         }
     }
