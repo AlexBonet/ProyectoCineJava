@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -22,6 +23,7 @@ import io.realm.Realm;
 
 public class LogInActivity extends AppCompatActivity {
 
+    private TextView textViewLogIn;
     private EditText inputUser, inputPswd;
     private Button btnLogIn, btnCrearCuenta;
     private Realm connect;
@@ -38,6 +40,7 @@ public class LogInActivity extends AppCompatActivity {
         inputPswd = findViewById(R.id.inputLogPswd);
         btnLogIn = findViewById(R.id.btnLogIn);
         btnCrearCuenta = findViewById(R.id.btnCrearCuenta);
+        textViewLogIn = findViewById(R.id.textViewLogIn);
 
         //SI no encuentra una base de datos te da la opcion de iniciar una
         long cuantos = connect.where(Usuario.class).count();
@@ -80,6 +83,13 @@ public class LogInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SingInActivity.class);
             startActivity(intent);
         });
+
+        textViewLogIn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user", "admin");
+            startActivity(intent);
+        });
+
     }
 
     private void login() {
