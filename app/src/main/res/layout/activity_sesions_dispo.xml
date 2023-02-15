@@ -23,7 +23,7 @@
         android:id="@+id/sdDia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DIA"
+        android:text="Sesiones de hoy:"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"

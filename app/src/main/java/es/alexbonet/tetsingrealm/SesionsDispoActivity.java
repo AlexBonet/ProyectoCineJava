@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.R;
@@ -32,8 +34,7 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
 
     private TextView tvtitulo, tvdia;
     private RecyclerView recyclerView;
-    private String fecha, peli;
-    private int dia,mes,any;
+    private String peli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +47,13 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
         tvtitulo = findViewById(R.id.sdTitulo);
 
         peli = getIntent().getExtras().getString("film");
-        fecha = getIntent().getExtras().getString("fecha");
-        dia = getIntent().getExtras().getInt("dia");
-        mes = getIntent().getExtras().getInt("mes");
-        any = getIntent().getExtras().getInt("any");
-
         tvtitulo.setText(peli);
-        tvdia.setText(fecha);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tvdia.setText("SESIONSE DE HOY " + LocalDate.now());
+        } else {
+            tvdia.setText("SESIONSE DE HOY");
+
+        }
 
         //RECYCLERVIEW
         sesionList = sc.getAllSesionFromAFilm(connect, peli);
