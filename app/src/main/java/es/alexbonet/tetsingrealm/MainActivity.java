@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         connect = DataBase.getInstance().conectar(this);
 
         textView = findViewById(R.id.textView);
-        userName = getIntent().getExtras().getString("user"); //TODO DISAR ESTE EN EL FINAL
-        //userName = "admin";
+        //userName = getIntent().getExtras().getString("user"); //TODO DISAR ESTE EN EL FINAL
+        userName = "admin";
 
         //RECYCLERVIEW
         filmList = fc.getFilmsEnCartelera(connect);
