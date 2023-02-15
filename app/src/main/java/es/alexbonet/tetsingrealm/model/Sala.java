@@ -1,9 +1,11 @@
 package es.alexbonet.tetsingrealm.model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Sala extends RealmObject {
+public class Sala extends RealmObject implements Serializable {
     private String id_sala;
     @PrimaryKey
     private int num_sala;

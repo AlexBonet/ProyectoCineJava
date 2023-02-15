@@ -2,10 +2,12 @@ package es.alexbonet.tetsingrealm.model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Sesion extends RealmObject {
+public class Sesion extends RealmObject implements Serializable {
     @PrimaryKey
     private String id_sesion;
     private int num_sala;

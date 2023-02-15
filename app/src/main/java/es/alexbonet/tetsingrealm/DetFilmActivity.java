@@ -59,8 +59,9 @@ public class DetFilmActivity extends AppCompatActivity {
 
 
         btnSesions.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SesionsDispoActivity.class);
+            Intent intent = new Intent(this, CalendarActivity.class);
             //TODO putExtra
+            intent.putExtra("film", film);
             startActivity(intent);
         });
 

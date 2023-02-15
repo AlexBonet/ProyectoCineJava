@@ -61,7 +61,7 @@ public class IniciarDB {
                 new Sala(3,7,7, SalaType.NORMAL.getString()),
                 new Sala(4,7,7, SalaType.TRESD.getString()),
                 new Sala(5,7,7, SalaType.TRESD.getString()),
-                new Sala(6,6,6, SalaType.CUATRODX.getString())
+                new Sala(6,7,7, SalaType.CUATRODX.getString())
         };
 
         for (Sala s : salas) {
