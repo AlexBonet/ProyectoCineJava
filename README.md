@@ -2,6 +2,7 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 15/02/2023
+  - añadir botos de atras o cancelar
   - crear activity de sala per elegir butaca
   
 MES COSES:
