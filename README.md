@@ -2,7 +2,9 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - posar que puga posar el cartell en añadir peli y que si no añadis que fique la default
+  - advertencia de posar mal una foto en add film
+  - checkbox per a admin o empleado de quitar o poner la cartelera // en ello
+  - opcion de ver todas la pelis desde el menu de no clientes
   - añadir botons de atras o cancelar
   - crear activity de sala per elegir butaca
   
