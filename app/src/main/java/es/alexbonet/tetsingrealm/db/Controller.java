@@ -98,6 +98,10 @@ public class Controller {
         return salas;
     }
 
+    public Sesion getAllSesionFromID(Realm connect, String id){
+        return connect.where(Sesion.class).equalTo("id_sesion",id).findFirst();
+    }
+
     public void createSesion(Realm connect, Sesion sesion){
         Sesion s = sesion;
         s.setId_sesion(UUID.randomUUID().toString());

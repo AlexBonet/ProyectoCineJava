@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int posi = recyclerView.getChildAdapterPosition(view);
         Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
-        intent.putExtra("titulo",filmList.get(posi).getTitulo());
+        intent.putExtra("film",filmList.get(posi).getTitulo());
         intent.putExtra("user",userName);
         startActivity(intent);
     }

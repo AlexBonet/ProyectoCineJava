@@ -57,9 +57,12 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
             holder.cartele.setImageResource(R.drawable.ic_baseline_local_movies_24_red);
         }
 
-        if (c.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
-            holder.cartele.setVisibility(View.INVISIBLE);
+        if (userName != null){
+            if (c.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
+                holder.cartele.setVisibility(View.INVISIBLE);
+            }
         }
+
     }
 
     @Override

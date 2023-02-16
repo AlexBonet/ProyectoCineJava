@@ -32,7 +32,7 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
 
     private TextView tvtitulo, tvdia;
     private RecyclerView recyclerView;
-    private String peli;
+    private String peli, username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +68,9 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int posi = recyclerView.getChildAdapterPosition(v);
-        //username = getIntent().getExtras().getString("user");
-        //Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class); //TODO IR AL SALA
-        //intent.putExtra("titulo",sesionList.get(posi).getTitulo());
-        //intent.putExtra("user", username);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(),SalaActivity.class);
+        intent.putExtra("user", username);
+        intent.putExtra("sesion",sesionList.get(posi).getId_sesion()); //EN ESTO PASE LA SALA Y LA PELI
+        startActivity(intent);
     }
 }

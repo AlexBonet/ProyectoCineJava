@@ -38,7 +38,7 @@ public class DetFilmActivity extends AppCompatActivity {
 
         connect = DataBase.getInstance().conectar(this);
 
-        String tituloFrom = getIntent().getExtras().getString("titulo");
+        String tituloFrom = getIntent().getExtras().getString("film");
         userName = getIntent().getExtras().getString("user");
 
 
@@ -86,13 +86,11 @@ public class DetFilmActivity extends AppCompatActivity {
 
         btnSesions.setOnClickListener(view -> {
             Intent intent = new Intent(this, SesionsDispoActivity.class);
-            //TODO putExtra?? yo crec q pasant el ttulo de la peli bé
             intent.putExtra("film", tituloFrom);
             intent.putExtra("user",userName);
             startActivity(intent);
         });
 
-        //TODO PROBAR
         cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
