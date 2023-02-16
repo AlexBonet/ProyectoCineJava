@@ -2,6 +2,7 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
+  -boton de volver en vore les sesions
   - añadir botons de atras o cancelar
   - en detFilms comprobar si una peli te sesions
   - crear activity de sala per elegir butaca
