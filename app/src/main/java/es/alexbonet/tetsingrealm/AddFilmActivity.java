@@ -30,6 +30,7 @@ public class AddFilmActivity extends AppCompatActivity {
     private EditText inTitulo, inDescr, inGenero, inEdMin, inDuracion, inImgUrl;
     private CheckBox cbEnCartelera;
     private Button btnAdd, btnCancelar;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class AddFilmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_film);
 
         connect = DataBase.getInstance().conectar(this);
+        userName = getIntent().getExtras().getString("user");
 
         inTitulo = findViewById(R.id.afInputTitulo);
         inDescr = findViewById(R.id.afInputDescip);
@@ -49,6 +51,7 @@ public class AddFilmActivity extends AppCompatActivity {
         btnCancelar = findViewById(R.id.afbtnCancelar);
         btnCancelar.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user",userName);
             startActivity(intent);
         });
 
@@ -71,7 +74,8 @@ public class AddFilmActivity extends AppCompatActivity {
                     builder.setTitle("Confirma los campos");
                     builder.setMessage("Titulo: " + titulo +"\n" +
                             "Duración: " + duraci + "\n" +
-                            "Edad mñinima: " + edamin + "\n");
+                            "Edad mñinima: " + edamin + "\n"
+                    );
                     // Add the buttons
                     builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -80,6 +84,7 @@ public class AddFilmActivity extends AppCompatActivity {
                             }
                             fc.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, url[0]));
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("user",userName);
                             startActivity(intent);
                         }
                     });

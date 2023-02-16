@@ -59,4 +59,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_gato_botas_foreground" />
+
+    <ImageView
+        android:id="@+id/fvImgCartelera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/rvMainImg"
+        app:layout_constraintTop_toTopOf="@+id/rvMainImg"
+        app:srcCompat="@drawable/ic_baseline_local_movies_24_green" />
 </androidx.constraintlayout.widget.ConstraintLayout>

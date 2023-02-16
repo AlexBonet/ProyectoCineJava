@@ -21,6 +21,12 @@
                 android:title="AÑADIR PELICULA"
                 app:showAsAction="ifRoom"
                 />
+            <item
+                android:id="@+id/am_allFilms"
+                android:icon="@drawable/ic_twotone_movie_creation_24"
+                android:title="VER TODAS LAS PELICULAS"
+                app:showAsAction="ifRoom"
+                />
 
         </menu>
     </item>

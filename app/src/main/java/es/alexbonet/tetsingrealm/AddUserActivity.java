@@ -23,14 +23,15 @@ public class AddUserActivity extends AppCompatActivity {
     private Button btnRegist, btnAECancelar;
     private Realm connect;
     private final UserController userController = new UserController();
+    private String userName;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
         connect = DataBase.getInstance().conectar(this);
+        userName = getIntent().getExtras().getString("user");
 
         inputDni = findViewById(R.id.inputAEDni);
         inputNombre = findViewById(R.id.inputAENombre);
@@ -43,6 +44,7 @@ public class AddUserActivity extends AppCompatActivity {
 
         btnAECancelar.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user",userName);
             startActivity(intent);
         });
 

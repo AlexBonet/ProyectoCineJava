@@ -26,7 +26,6 @@ import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    //TODO: tinc la idea vaig aanar fent pelis y probar el crud
 
     private final UserController uc = new UserController();
     private final FilmController fc = new FilmController();
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         filmList = fc.getFilmsEnCartelera(connect);
         recyclerView = findViewById(R.id.rvMainCartelera);
 
-        filmsRvAdapter = new FilmsRVAdapter(this, filmList);
+        filmsRvAdapter = new FilmsRVAdapter(this, filmList, connect, userName);
         filmsRvAdapter.setOnClickListener(this);
         recyclerView.setAdapter(filmsRvAdapter);
 
@@ -93,10 +92,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             case (R.id.am_addEmple):
                 intent = new Intent(this, AddUserActivity.class);
+                intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;
             case (R.id.am_addFilm):
                 intent = new Intent(this, AddFilmActivity.class);
+                intent.putExtra("user",userName);
+                startActivity(intent);
+                return true;
+            case (R.id.am_allFilms):
+                intent = new Intent(this, AllFilmsActivity.class);
+                intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;
             default:
@@ -107,10 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int posi = recyclerView.getChildAdapterPosition(view);
-        //username = getIntent().getExtras().getString("user");
         Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
         intent.putExtra("titulo",filmList.get(posi).getTitulo());
-        //intent.putExtra("user", username);
+        intent.putExtra("user",userName);
         startActivity(intent);
     }
 }

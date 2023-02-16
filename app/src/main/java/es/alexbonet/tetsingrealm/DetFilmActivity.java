@@ -5,29 +5,35 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import es.alexbonet.tetsingrealm.controller.FilmController;
 import es.alexbonet.tetsingrealm.controller.SesionController;
+import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
+import es.alexbonet.tetsingrealm.model.UserType;
 import io.realm.Realm;
 
 public class DetFilmActivity extends AppCompatActivity {
     private final FilmController filmController = new FilmController();
     private final SesionController sesionController = new SesionController();
+    private final UserController userController = new UserController();
     private TextView titulo, genero, edad, duracion;
     private Button btnDescrip, btnSesions;
     private ImageView img;
     private CheckBox cbCartelera;
     private Film film;
     private Realm connect;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,8 @@ public class DetFilmActivity extends AppCompatActivity {
         connect = DataBase.getInstance().conectar(this);
 
         String tituloFrom = getIntent().getExtras().getString("titulo");
+        userName = getIntent().getExtras().getString("user");
+
 
         film = filmController.getFilmByName(connect, tituloFrom);
 
@@ -65,23 +73,38 @@ public class DetFilmActivity extends AppCompatActivity {
         });
 
         //TODO puc que fer o que mostre algo de sesiones no disponible o desactivar el boton o ferlo amagat, ademés de que els admins puguen añadir
-        if (sesionController.getAllSesionFromAFilm(connect, tituloFrom) != null) {
-            btnSesions.setEnabled(false);
+        //TODO BOTON APAGAT SI NO TE SESION
+
+
+        //Si la peli esta en cartelera se marca con el check
+        if (film.isEn_cartelera()){
+            cbCartelera.setChecked(true);
+        }else {
+            cbCartelera.setChecked(false);
+        }
+
+        //El usuario no puede ver checkbox
+        if (userController.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
+            cbCartelera.setVisibility(View.INVISIBLE);
         }
 
         btnSesions.setOnClickListener(view -> {
             Intent intent = new Intent(this, SesionsDispoActivity.class);
             //TODO putExtra?? yo crec q pasant el ttulo de la peli bé
             intent.putExtra("film", tituloFrom);
+            intent.putExtra("user",userName);
             startActivity(intent);
         });
 
+        //TODO PROBAR
         cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    //Set en cartelera o quitar TODO
-                }
+                filmController.setCartelera(connect,tituloFrom, b);
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("user",userName);
+                Toast.makeText(DetFilmActivity.this, "VOLVIENDO A LA PÁGINA DE INICIO", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
             }
         });
 

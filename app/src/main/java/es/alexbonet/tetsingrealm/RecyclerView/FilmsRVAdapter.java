@@ -1,5 +1,6 @@
 package es.alexbonet.tetsingrealm.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +16,24 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.R;
+import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.model.Film;
+import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.Usuario;
+import io.realm.Realm;
+import io.realm.mongodb.User;
 
 public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHolder>{
+    private UserController uc = new UserController();
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
     private List<Film> pelisCartrelera;
+    private Realm connect;
+    private String userName;
 
-    public FilmsRVAdapter(Context context, List<Film> pelisCartrelera){
+    public FilmsRVAdapter(Context context, List<Film> pelisCartrelera, Realm connect, String userName){
+        this.connect = connect;
+        this.userName = userName;
         this.pelisCartrelera = pelisCartrelera;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -40,8 +51,18 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
         Film f = pelisCartrelera.get(position);
         holder.titulo.setText(f.getTitulo());
         holder.genero.setText("Genero: " + f.getGenero());
-        holder.edad.setText("Edad recomendad: +" + String.valueOf(f.getEdad_min()));
+        holder.edad.setText("Edad recomendad: +" + f.getEdad_min());
         Picasso.get().load(f.getUrlImage()).into(holder.img);
+
+        if (f.isEn_cartelera()){
+            holder.cartele.setImageResource(R.drawable.ic_baseline_local_movies_24_green);
+        } else {
+            holder.cartele.setImageResource(R.drawable.ic_baseline_local_movies_24_red);
+        }
+
+        if (uc.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
+            holder.cartele.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -58,6 +79,7 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
         TextView genero;
         TextView edad;
         ImageView img;
+        ImageView cartele;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +87,7 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
             genero = itemView.findViewById(R.id.rvMainGenero);
             edad = itemView.findViewById(R.id.rvMainEdadmin);
             img = itemView.findViewById(R.id.rvMainImg);
+            cartele = itemView.findViewById(R.id.fvImgCartelera);
         }
     }
 }

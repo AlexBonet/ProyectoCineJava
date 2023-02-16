@@ -32,12 +32,13 @@ public class FilmController {
         connect.commitTransaction();
     }
 
-    //TODO
-    public void setOutCartelera(Realm connect, String id, boolean enCartelera){
-        connect.executeTransaction( transactionRealm -> {
-            Film innerOtherTask = transactionRealm.where(Film.class).equalTo("_id", id).findFirst();
-            innerOtherTask.setEn_cartelera(enCartelera);
-        });
+    //TODO crec q funciona
+    public void setCartelera(Realm connect, String titulo, boolean enCartelera){
+        Film f = connect.where(Film.class).equalTo("titulo",titulo).findFirst();
+
+        connect.beginTransaction();
+        f.setEn_cartelera(enCartelera);
+        connect.commitTransaction();
     }
 
 
