@@ -15,18 +15,14 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import es.alexbonet.tetsingrealm.controller.FilmController;
-import es.alexbonet.tetsingrealm.controller.SesionController;
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.UserType;
 import io.realm.Realm;
 
 public class DetFilmActivity extends AppCompatActivity {
-    private final FilmController filmController = new FilmController();
-    private final SesionController sesionController = new SesionController();
-    private final UserController userController = new UserController();
+    private final Controller c = new Controller();
     private TextView titulo, genero, edad, duracion;
     private Button btnDescrip, btnSesions;
     private ImageView img;
@@ -46,7 +42,7 @@ public class DetFilmActivity extends AppCompatActivity {
         userName = getIntent().getExtras().getString("user");
 
 
-        film = filmController.getFilmByName(connect, tituloFrom);
+        film = c.getFilmByName(connect, tituloFrom);
 
         titulo = findViewById(R.id.dfTitulo);
         genero = findViewById(R.id.dfCategoria);
@@ -84,7 +80,7 @@ public class DetFilmActivity extends AppCompatActivity {
         }
 
         //El usuario no puede ver checkbox
-        if (userController.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
+        if (c.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
             cbCartelera.setVisibility(View.INVISIBLE);
         }
 
@@ -100,7 +96,7 @@ public class DetFilmActivity extends AppCompatActivity {
         cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                filmController.setCartelera(connect,tituloFrom, b);
+                c.setCartelera(connect,tituloFrom, b);
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 intent.putExtra("user",userName);
                 Toast.makeText(DetFilmActivity.this, "VOLVIENDO A LA PÁGINA DE INICIO", Toast.LENGTH_SHORT).show();

@@ -17,8 +17,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.RecyclerView.FilmsRVAdapter;
-import es.alexbonet.tetsingrealm.controller.FilmController;
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.UserType;
@@ -27,8 +26,7 @@ import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final UserController uc = new UserController();
-    private final FilmController fc = new FilmController();
+    private final Controller c = new Controller();
     private TextView textView;
     private String userName;
     private Usuario u;
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userName = getIntent().getExtras().getString("user");
 
         //RECYCLERVIEW
-        filmList = fc.getFilmsEnCartelera(connect);
+        filmList = c.getFilmsEnCartelera(connect);
         recyclerView = findViewById(R.id.rvMainCartelera);
 
         filmsRvAdapter = new FilmsRVAdapter(this, filmList, connect, userName);
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //OBTENER USUARIO
         if (userName != null){
-            u = uc.getUser(connect, userName);
+            u = c.getUser(connect, userName);
             textView.setText("HOLA " + userName + " -- " + filmList.size());
         }
     }

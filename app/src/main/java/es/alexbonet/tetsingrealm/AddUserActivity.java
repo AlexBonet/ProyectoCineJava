@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.UserType;
 import es.alexbonet.tetsingrealm.model.Usuario;
@@ -22,7 +22,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText inputDni, inputNombre, inputApell, inputUserName, inputPswd, inputConfPswd;
     private Button btnRegist, btnAECancelar;
     private Realm connect;
-    private final UserController userController = new UserController();
+    private final Controller c = new Controller();
     private String userName;
 
     @Override
@@ -64,13 +64,13 @@ public class AddUserActivity extends AppCompatActivity {
         if (dni.isEmpty() || nom.isEmpty() || ape.isEmpty() || user.isEmpty() || pswd.isEmpty() || cpswd.isEmpty()) { // QUE NO HAYA NINGUN CAMPO VACIO
             Toast.makeText(this, "CAMPOS VACIOS", Toast.LENGTH_SHORT).show();
         } else {
-            if (userController.getUser(connect, user) != null) { // QUE NO HAYA OTRO USUARIO CON EL MISMO NOMBRE DE USUARIO
+            if (c.getUser(connect, user) != null) { // QUE NO HAYA OTRO USUARIO CON EL MISMO NOMBRE DE USUARIO
                 Toast.makeText(this, "El nombre de usuario ya existe", Toast.LENGTH_SHORT).show();
-            } else if (userController.getFromDNI(connect,dni) != null) { // QUE NO HAYA OTRO USUARIO CON EL MISMO DNI
+            } else if (c.getFromDNI(connect,dni) != null) { // QUE NO HAYA OTRO USUARIO CON EL MISMO DNI
                 Toast.makeText(this, "El DNI del usuario ya existe", Toast.LENGTH_SHORT).show();
             } else {
                 if (pswd.equals(cpswd)) { // SI LAS CONTRASEÑAS COINCIDEN
-                    userController.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.EMPLEADO.getString())); // CREA EL USUARIO
+                    c.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.EMPLEADO.getString())); // CREA EL USUARIO
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Usuario creado correctamente");

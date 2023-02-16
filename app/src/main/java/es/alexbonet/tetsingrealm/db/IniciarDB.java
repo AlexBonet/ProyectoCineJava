@@ -1,11 +1,5 @@
 package es.alexbonet.tetsingrealm.db;
 
-import android.content.Context;
-
-import es.alexbonet.tetsingrealm.controller.FilmController;
-import es.alexbonet.tetsingrealm.controller.SalaController;
-import es.alexbonet.tetsingrealm.controller.SesionController;
-import es.alexbonet.tetsingrealm.controller.UserController;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.Sala;
 import es.alexbonet.tetsingrealm.model.SalaType;
@@ -15,17 +9,10 @@ import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
 public class IniciarDB {
-    private final UserController userController;
-    private final FilmController filmController;
-    private final SalaController salaController;
-    private final SesionController sesionController;
-    //MES CONTROLERS
+    private final Controller c;
 
     public IniciarDB() {
-        userController = new UserController();
-        filmController = new FilmController();
-        salaController = new SalaController();
-        sesionController = new SesionController();
+        c = new Controller();
     }
 
     public void init(Realm connect){
@@ -38,7 +25,7 @@ public class IniciarDB {
                 new Usuario("55555555A","Xavi","Garcia","xavi","123", UserType.CLIENTE.getString())
         };
         for (Usuario u : usuarios) {
-            userController.createUser(connect, u);
+            c.createUser(connect, u);
         }
 
         //    public Film(String titulo, String descrip, int duracion, int edad_min, String genero, boolean en_carteleta) {
@@ -51,7 +38,7 @@ public class IniciarDB {
                 new Film("TADEO JONES 3. LA TABLA ESMERALDA", "TADEO JONES 3", 89, 0, "Animacion", false,"https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004246/0000006033/El_Asombroso_Mauricio.jpg")
         };
         for (Film f : films) {
-            filmController.createFilm(connect, f);
+            c.createFilm(connect, f);
         }
 
         //    public Sala(int num_sala, int filas, int columnas, String tipo_sala) {
@@ -65,7 +52,7 @@ public class IniciarDB {
         };
 
         for (Sala s : salas) {
-            salaController.createSala(connect, s);
+            c.createSala(connect, s);
         }
 
         //    public Sesion(int num_sala, String titulo_peli, String hora_empieza, int ocupacion) { //TODO la ocupacion se podria posar de un altra forma
@@ -96,7 +83,7 @@ public class IniciarDB {
         };
 
         for (Sesion s : sesions) {
-            sesionController.createSesion(connect, s);
+            c.createSesion(connect, s);
         }
 
     }

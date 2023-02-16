@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.db.IniciarDB;
 import es.alexbonet.tetsingrealm.model.Usuario;
@@ -27,7 +27,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText inputUser, inputPswd;
     private Button btnLogIn, btnCrearCuenta;
     private Realm connect;
-    private final UserController userController = new UserController();
+    private final Controller c = new Controller();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class LogInActivity extends AppCompatActivity {
             });
             builder.setNegativeButton("Empezar sin base de datos", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    userController.createUser(connect, new Usuario(
+                    c.createUser(connect, new Usuario(
                             UUID.randomUUID().toString(),
                             "DNIADMIN",
                             "admin",
@@ -93,7 +93,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void login() {
-        Usuario u = userController.getUser(connect,inputUser.getText().toString());
+        Usuario u = c.getUser(connect,inputUser.getText().toString());
 
         if (u == null){
             Toast.makeText(this, "Usuario no existe", Toast.LENGTH_SHORT).show();

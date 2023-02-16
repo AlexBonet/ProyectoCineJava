@@ -12,13 +12,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.RecyclerView.FilmsRVAdapter;
-import es.alexbonet.tetsingrealm.controller.FilmController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
 import io.realm.Realm;
 
 public class AllFilmsActivity extends AppCompatActivity implements View.OnClickListener {
-    private final FilmController fc = new FilmController();
+    private final Controller c = new Controller();
     private TextView textView;
     private Realm connect;
     private RecyclerView recyclerView;
@@ -38,7 +38,7 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
         textView = findViewById(R.id.allFTextView);
 
         //RECYCLERVIEW
-        filmList = fc.getAllFilms(connect);
+        filmList = c.getAllFilms(connect);
         recyclerView = findViewById(R.id.allFRV);
 
         filmsRvAdapter = new FilmsRVAdapter(this, filmList,connect,userName);

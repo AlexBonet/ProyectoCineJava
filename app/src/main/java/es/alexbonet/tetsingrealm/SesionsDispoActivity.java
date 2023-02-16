@@ -17,9 +17,7 @@ import java.util.List;
 import es.alexbonet.tetsingrealm.R;
 import es.alexbonet.tetsingrealm.RecyclerView.FilmsRVAdapter;
 import es.alexbonet.tetsingrealm.RecyclerView.SesionRVAdapter;
-import es.alexbonet.tetsingrealm.controller.FilmController;
-import es.alexbonet.tetsingrealm.controller.SesionController;
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.Sesion;
@@ -27,7 +25,7 @@ import io.realm.Realm;
 
 public class SesionsDispoActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final SesionController sc = new SesionController();
+    private final Controller c = new Controller();
     private SesionRVAdapter sesionRVAdapter;
     private List<Sesion> sesionList;
     private Realm connect;
@@ -56,7 +54,7 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
         }
 
         //RECYCLERVIEW
-        sesionList = sc.getAllSesionFromAFilm(connect, peli);
+        sesionList = c.getAllSesionFromAFilm(connect, peli);
         recyclerView = findViewById(R.id.sdRecyclerview);
 
         sesionRVAdapter = new SesionRVAdapter(this, sesionList);

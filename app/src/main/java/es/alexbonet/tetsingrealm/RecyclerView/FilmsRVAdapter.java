@@ -1,6 +1,5 @@
 package es.alexbonet.tetsingrealm.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +15,13 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.R;
-import es.alexbonet.tetsingrealm.controller.UserController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.UserType;
-import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
-import io.realm.mongodb.User;
 
 public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHolder>{
-    private UserController uc = new UserController();
+    private Controller c = new Controller();
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
     private List<Film> pelisCartrelera;
@@ -60,7 +57,7 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
             holder.cartele.setImageResource(R.drawable.ic_baseline_local_movies_24_red);
         }
 
-        if (uc.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
+        if (c.getUser(connect,userName).getTipo().equals(UserType.CLIENTE.getString())){
             holder.cartele.setVisibility(View.INVISIBLE);
         }
     }

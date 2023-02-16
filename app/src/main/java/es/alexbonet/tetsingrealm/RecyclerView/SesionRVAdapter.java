@@ -4,24 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import es.alexbonet.tetsingrealm.R;
-import es.alexbonet.tetsingrealm.controller.SalaController;
+import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Sesion;
 import io.realm.Realm;
 
 public class SesionRVAdapter extends RecyclerView.Adapter<SesionRVAdapter.ViewHolder>{
-    private final SalaController sl = new SalaController();
+    private final Controller c = new Controller();
     private Realm connect;
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
@@ -46,7 +43,7 @@ public class SesionRVAdapter extends RecyclerView.Adapter<SesionRVAdapter.ViewHo
         Sesion s = sesionList.get(position);
         holder.hora.setText(s.getHora_empieza());
         holder.numsala.setText("Sala: " + s.getNum_sala());
-        holder.tipsala.setText(sl.getSala(connect,s.getNum_sala()).getTipo_sala());
+        holder.tipsala.setText(c.getSala(connect,s.getNum_sala()).getTipo_sala());
     }
 
     @Override
