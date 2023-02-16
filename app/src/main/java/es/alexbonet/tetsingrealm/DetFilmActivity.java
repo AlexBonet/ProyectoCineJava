@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class DetFilmActivity extends AppCompatActivity {
     private TextView titulo, genero, edad, duracion;
     private Button btnDescrip, btnSesions;
     private ImageView img;
+    private CheckBox cbCartelera;
     private Film film;
     private Realm connect;
 
@@ -43,13 +46,14 @@ public class DetFilmActivity extends AppCompatActivity {
         duracion = findViewById(R.id.dfDuracion);
         btnDescrip = findViewById(R.id.dfbtnDescrip);
         btnSesions = findViewById(R.id.dfbtnVerSesiones);
+        cbCartelera = findViewById(R.id.cbEnCartelera);
         img = findViewById(R.id.dfImg);
 
         titulo.setText(film.getTitulo());
         genero.setText("Genero: " + film.getGenero());
         duracion.setText("Duración:" + film.getDuracion());
         edad.setText("Edad mínima recomendada: " + film.getEdad_min());
-        Picasso.get().load(film.getUrlImage()).into(img);
+        Picasso.get().load(film.getUrlImage()).into(img);//cuidao
 
         btnDescrip.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -60,12 +64,25 @@ public class DetFilmActivity extends AppCompatActivity {
             dialog.show();
         });
 
+        //TODO puc que fer o que mostre algo de sesiones no disponible o desactivar el boton o ferlo amagat, ademés de que els admins puguen añadir
+        if (sesionController.getAllSesionFromAFilm(connect, tituloFrom) != null) {
+            btnSesions.setEnabled(false);
+        }
 
         btnSesions.setOnClickListener(view -> {
             Intent intent = new Intent(this, SesionsDispoActivity.class);
             //TODO putExtra?? yo crec q pasant el ttulo de la peli bé
             intent.putExtra("film", tituloFrom);
             startActivity(intent);
+        });
+
+        cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    //Set en cartelera o quitar TODO
+                }
+            }
         });
 
     }

@@ -87,4 +87,14 @@
         app:layout_constraintStart_toStartOf="@+id/dfTitulo"
         app:layout_constraintTop_toBottomOf="@+id/dfCategoria" />
 
+    <CheckBox
+        android:id="@+id/cbEnCartelera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Marcar para la cartelera"
+        app:layout_constraintEnd_toEndOf="@+id/dfbtnDescrip"
+        app:layout_constraintStart_toStartOf="@+id/dfbtnDescrip"
+        app:layout_constraintTop_toBottomOf="@+id/dfbtnDescrip" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

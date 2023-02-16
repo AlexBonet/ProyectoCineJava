@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Título de la película"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/afInputEdadMin" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/aftv5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Duración"
@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/afInputDescip" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/aftv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genero:"
@@ -123,11 +123,11 @@
         android:id="@+id/afCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Marca para insertar en cartelera"
         app:layout_constraintEnd_toEndOf="@+id/afInputDuracion"
         app:layout_constraintStart_toStartOf="@+id/afInputDuracion"
-        app:layout_constraintTop_toBottomOf="@+id/afInputDuracion" />
+        app:layout_constraintTop_toBottomOf="@+id/afInputImgUrl" />
 
     <Button
         android:id="@+id/afbtnInsertar"
@@ -143,9 +143,30 @@
         android:id="@+id/afbtnCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="CANCELAR"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/afInputImgUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="URL de la imagen"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/afInputDuracion"
         app:layout_constraintStart_toStartOf="@+id/afInputDuracion"
-        app:layout_constraintTop_toBottomOf="@+id/afbtnInsertar" />
+        app:layout_constraintTop_toBottomOf="@+id/afInputDuracion" />
+
+    <TextView
+        android:id="@+id/aftv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL del cartel (no es obligatorio)"
+        app:layout_constraintBottom_toTopOf="@+id/afInputImgUrl"
+        app:layout_constraintStart_toStartOf="@+id/afInputImgUrl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class AddFilmActivity extends AppCompatActivity {
     private final FilmController fc = new FilmController();
     private Realm connect;
 
-    private EditText inTitulo, inDescr, inGenero, inEdMin, inDuracion;
+    private EditText inTitulo, inDescr, inGenero, inEdMin, inDuracion, inImgUrl;
     private CheckBox cbEnCartelera;
     private Button btnAdd, btnCancelar;
 
@@ -43,6 +43,7 @@ public class AddFilmActivity extends AppCompatActivity {
         inGenero = findViewById(R.id.afInputGenero);
         inEdMin = findViewById(R.id.afInputEdadMin);
         inDuracion = findViewById(R.id.afInputDuracion);
+        inImgUrl = findViewById(R.id.afInputImgUrl);
         cbEnCartelera = findViewById(R.id.afCheck);
         btnAdd = findViewById(R.id.afbtnInsertar);
         btnCancelar = findViewById(R.id.afbtnCancelar);
@@ -57,6 +58,7 @@ public class AddFilmActivity extends AppCompatActivity {
             String duraci = inDuracion.getText().toString();
             String edamin = inEdMin.getText().toString();
             String genero = inGenero.getText().toString();
+            final String[] url = {inImgUrl.getText().toString()};
             boolean enCat = cbEnCartelera.isChecked();
             //si son empty
             if (titulo.isEmpty() || descrp.isEmpty() || edamin.isEmpty() || genero.isEmpty() || duraci.isEmpty()) {
@@ -73,15 +75,10 @@ public class AddFilmActivity extends AppCompatActivity {
                     // Add the buttons
                     builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            fc.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004169/0000006071/Miki_Dkai:_Cassalla_Festes_i_Humor..._.jpg"));
-                            /*
-                            inTitulo.setText(null);
-                            inDescr.setText(null);
-                            inDuracion.setText(null);
-                            inEdMin.setText(null);
-                            inGenero.setText(null);
-                            cbEnCartelera.setChecked(false);
-                            */
+                            if (url[0].length() < 10){
+                                url[0] = "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004169/0000006071/Miki_Dkai:_Cassalla_Festes_i_Humor..._.jpg";
+                            }
+                            fc.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, url[0]));
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         }
