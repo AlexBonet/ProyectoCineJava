@@ -2,14 +2,13 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  -boton de volver en vore les sesions
+  - boton de volver en les sesions
+  - botes de cancelar y aceptar en la sala
   - añadir botons de atras o cancelar
-  - en detFilms comprobar si una peli te sesions
-  - crear activity de sala per elegir butaca
+  - en detFilms comprobar si una peli te sesions, per a activar o no el boton
+  - ¿si he comprat una entrada se cambia?
   
 MES COSES:
-  - PASAR ELEGIR UNA SESION Y MOSTRE LA SALA y te més coses
-  - Pasar tot a un soles controller
   - !!!!!!CUIDADO!!!!!!!  
         userName = getIntent().getExtras().getString("user");
         //AÑADIR
@@ -19,4 +18,5 @@ MES COSES:
 MEMORIA:
   - posar en la memoria que he posat el indicador de si la pelicula esta en cartelera, tambe dir que els clientes normal no ho veuen
   - advertencia de posar mal una foto en add film
+  - parlar de alrt dialog
 
