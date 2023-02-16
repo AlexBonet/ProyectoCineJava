@@ -10,3 +10,7 @@ TODO 16/02/2023
   
 MES COSES:
   - PASAR ELEGIR UNA SESION Y MOSTRE LA SALA y te més coses
+
+
+MEMORIA:
+  - posar en la memoria que he posat el indicador de si la pelicula esta en cartelera, tambe dir que els clientes normal no ho veuen
