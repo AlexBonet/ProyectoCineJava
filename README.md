@@ -8,6 +8,7 @@ TODO 16/02/2023
   
 MES COSES:
   - PASAR ELEGIR UNA SESION Y MOSTRE LA SALA y te més coses
+  - Pasar tot a un soles controller
   - !!!!!!CUIDADO!!!!!!!  
         userName = getIntent().getExtras().getString("user");
         //AÑADIR
