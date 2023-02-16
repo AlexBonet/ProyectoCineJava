@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import es.alexbonet.tetsingrealm.controller.FilmController;
 import es.alexbonet.tetsingrealm.controller.SesionController;
 import es.alexbonet.tetsingrealm.db.DataBase;
@@ -47,6 +49,7 @@ public class DetFilmActivity extends AppCompatActivity {
         genero.setText("Genero: " + film.getGenero());
         duracion.setText("Duración:" + film.getDuracion());
         edad.setText("Edad mínima recomendada: " + film.getEdad_min());
+        Picasso.get().load(film.getUrlImage()).into(img);
 
         btnDescrip.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
