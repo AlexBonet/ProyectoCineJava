@@ -6,7 +6,6 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-//TODO EL ID SE QUEDA???
 public class Usuario extends RealmObject implements Serializable {
     private String id;
     @PrimaryKey

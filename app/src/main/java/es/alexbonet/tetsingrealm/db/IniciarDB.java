@@ -55,7 +55,7 @@ public class IniciarDB {
             c.createSala(connect, s);
         }
 
-        //    public Sesion(int num_sala, String titulo_peli, String hora_empieza, int ocupacion) { //TODO la ocupacion se podria posar de un altra forma
+        //    public Sesion(int num_sala, String titulo_peli, String hora_empieza, int ocupacion) {
         Sesion [] sesions = new Sesion[]{
                 //SALA 1 2D
                 new Sesion(1,"El gato con botas 2","16:00",112),

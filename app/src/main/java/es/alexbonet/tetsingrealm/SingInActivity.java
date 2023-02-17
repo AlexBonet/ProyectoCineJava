@@ -66,7 +66,6 @@ public class SingInActivity extends AppCompatActivity {
                 Toast.makeText(this, "El DNI del usuario ya existe", Toast.LENGTH_SHORT).show();
             } else {
                 if (pswd.equals(cpswd)) { // SI LAS CONTRASEÑAS COINCIDEN
-                    //TODO PETA
                     c.createUser(connect, new Usuario(dni,nom,ape,user,pswd, UserType.CLIENTE.getString())); // CREA EL USUARIO
                     Intent intent = new Intent(this,MainActivity.class);
                     intent.putExtra("user", user);

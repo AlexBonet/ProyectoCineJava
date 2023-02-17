@@ -37,7 +37,7 @@ public class SesionRVAdapter extends RecyclerView.Adapter<SesionRVAdapter.ViewHo
         return new SesionRVAdapter.ViewHolder(view);
     }
 
-    @Override //TODO PETA; NO FICA LA HORA
+    @Override
     public void onBindViewHolder(@NonNull SesionRVAdapter.ViewHolder holder, int position) {
         connect = DataBase.getInstance().conectar(this.inflater.getContext());
         Sesion s = sesionList.get(position);

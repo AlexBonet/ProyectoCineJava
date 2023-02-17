@@ -9,8 +9,8 @@ public class Entrada extends RealmObject implements Serializable {
     private String id_entrada;
     @PrimaryKey
     private int num_entrada;
-    private String fila; // TODO ESTO POT SER UNA CLASE FILA
-    private String butaca; // TODO ESTO POT SER UNA CLASE BUTACA
+    private String fila;
+    private String butaca;
 
     public Entrada(String id_entrada, int num_entrada, String fila, String butaca) {
         this.id_entrada = id_entrada;

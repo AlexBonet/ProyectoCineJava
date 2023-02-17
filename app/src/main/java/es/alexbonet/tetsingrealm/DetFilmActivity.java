@@ -61,7 +61,6 @@ public class DetFilmActivity extends AppCompatActivity {
         Picasso.get().load(film.getUrlImage()).into(img);
 
 
-        //TODO puc que fer o que mostre algo de sesiones no disponible o desactivar el boton o ferlo amagat, ademés de que els admins puguen añadir
         //TODO BOTON APAGAT SI NO TE SESION
 
 

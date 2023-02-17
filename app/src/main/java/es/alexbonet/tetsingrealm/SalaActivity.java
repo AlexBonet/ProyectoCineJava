@@ -119,7 +119,7 @@ public class SalaActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("DONDE QUIERES IR:");
-            builder.setItems(new CharSequence[]{"VER SESIONES", "VOLVER A LA PELICULA", "IR A LA CARTELERA"}, new DialogInterface.OnClickListener() {
+            builder.setItems(new CharSequence[]{"VER SESIONES", "VOLVER A LA PELÍCULA", "IR A LA CARTELERA"}, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     Intent intent;
