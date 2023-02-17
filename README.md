@@ -2,8 +2,10 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - Crear sesiones ?? NO FICA RES
+  - GESTION SESIONES (COMPLETO) Y PELICULAS (ORGANIZAR BTN ADD)
   -   fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
+  - controller de delete, poder eliminar sesiones
+  - gestion de usuarios??? espere qe no
   
 MES COSES:  
   - !!!!!!CUIDADO!!!!!!!  
