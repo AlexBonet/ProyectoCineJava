@@ -4,7 +4,7 @@ Proyecto de programacion multiplataformar junto acceso a datos
 TODO 16/02/2023
   - Quitar TODOs
   - Comprar entradas
-  - Crear sesiones
+  - Crear sesiones ?? NO FICA RES
   - añadir botons de atras o cancelar ¿A ON MÉS?
   - en detFilms comprobar si una peli te sesions, per a activar o no el boton
   - ¿si he comprat una entrada se cambia?
