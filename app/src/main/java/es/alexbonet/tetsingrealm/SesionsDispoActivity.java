@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
     private TextView tvtitulo, tvdia;
     private RecyclerView recyclerView;
     private String peli, username;
+    private Button btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,9 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
 
         tvdia = findViewById(R.id.sdDia);
         tvtitulo = findViewById(R.id.sdTitulo);
+        btnVolver = findViewById(R.id.sdbtnVolver);
 
+        username = getIntent().getExtras().getString("user");
         peli = getIntent().getExtras().getString("film");
         tvtitulo.setText(peli);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -63,6 +67,13 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        btnVolver.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
+            intent.putExtra("film",peli);
+            intent.putExtra("user",username);
+            startActivity(intent);
+        });
     }
 
     @Override

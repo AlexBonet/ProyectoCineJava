@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
     private FilmsRVAdapter filmsRvAdapter;
     private List<Film> filmList;
     private String userName;
+    private Button btnvolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,14 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
         userName = getIntent().getExtras().getString("user");
 
         textView = findViewById(R.id.allFTextView);
+        btnvolver = findViewById(R.id.allFbtnVolver);
+
+        btnvolver.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user",userName);
+            Toast.makeText(this, "Volviendo a la cartelera", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        });
 
         //RECYCLERVIEW
         filmList = c.getAllFilms(connect);
@@ -51,10 +62,10 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onClick(View view) { //TODO PASAR USERS???
+    public void onClick(View view) {
         int posi = recyclerView.getChildAdapterPosition(view);
         Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
-        intent.putExtra("titulo",filmList.get(posi).getTitulo());
+        intent.putExtra("film",filmList.get(posi).getTitulo());
         intent.putExtra("user",userName);
         startActivity(intent);
     }

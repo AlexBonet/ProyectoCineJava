@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,7 @@ import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Butaca;
 import es.alexbonet.tetsingrealm.model.Film;
+import es.alexbonet.tetsingrealm.model.RecuentoButacas;
 import es.alexbonet.tetsingrealm.model.Sala;
 import es.alexbonet.tetsingrealm.model.Sesion;
 import es.alexbonet.tetsingrealm.model.Usuario;
@@ -71,7 +73,6 @@ public class SalaActivity extends AppCompatActivity {
         listaDeButacas = new LinkedList<>();
         asientosOcupados = new LinkedList<>();
         listaDeButacasOcupadas = new LinkedList<>();
-
 
         TableLayout contTable = new TableLayout(this);
         contTable.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -121,28 +122,30 @@ public class SalaActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("DONDE QUIERES IR:");
-
-            builder.setPositiveButton("VER SESIONES", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(getApplicationContext(),SesionsDispoActivity.class);
-                    intent.putExtra("film", sesion.getTitulo_peli());
-                    intent.putExtra("user", username);
-                    startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("IR AL PELICULA", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(getApplicationContext(),DetFilmActivity.class);
-                    intent.putExtra("film",sesion.getTitulo_peli());
-                    intent.putExtra("user",username);
-                    startActivity(intent);
-                }
-            });
-            builder.setNeutralButton("", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    intent.putExtra("user", username);
-                    startActivity(intent);
+            builder.setItems(new CharSequence[]{"VER SESIONES", "VOLVER A LA PELICULA", "IR A LA CARTELERA"}, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent;
+                    switch (i){
+                        case 0:
+                            intent = new Intent(getApplicationContext(),SesionsDispoActivity.class);
+                            intent.putExtra("film", sesion.getTitulo_peli());
+                            intent.putExtra("user", username);
+                            startActivity(intent);
+                            break;
+                        case 1:
+                            intent = new Intent(getApplicationContext(),DetFilmActivity.class);
+                            intent.putExtra("film",sesion.getTitulo_peli());
+                            intent.putExtra("user",username);
+                            startActivity(intent);
+                            break;
+                        case 2:
+                            intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("user", username);
+                            Toast.makeText(getApplicationContext(), "Volviendo a la cartelera", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            break;
+                    }
                 }
             });
             AlertDialog dialog = builder.create();
@@ -154,7 +157,12 @@ public class SalaActivity extends AppCompatActivity {
             builder.setTitle("SEGURO QUE QUIERES CONTAR ESTAS ENTRADAS");
             builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    // TODO COMPRA LA ENTRDA
+                    Intent intent = new Intent(SalaActivity.this, ComprarActivity.class);
+                    RecuentoButacas butacas = new RecuentoButacas(asientosOcupados);
+                    intent.putExtra("butacas", butacas);
+                    intent.putExtra("user", username);
+                    intent.putExtra("sesion",sesion.getId_sesion()); //EN ESTO PASE LA SALA Y LA PELI
+                    startActivity(intent);
                 }
             });
             builder.setNegativeButton("CANCELAR", null);

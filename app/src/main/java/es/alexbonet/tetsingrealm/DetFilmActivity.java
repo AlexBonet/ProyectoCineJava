@@ -24,7 +24,7 @@ import io.realm.Realm;
 public class DetFilmActivity extends AppCompatActivity {
     private final Controller c = new Controller();
     private TextView titulo, genero, edad, duracion;
-    private Button btnDescrip, btnSesions;
+    private Button btnDescrip, btnSesions, btnVolver;
     private ImageView img;
     private CheckBox cbCartelera;
     private Film film;
@@ -49,6 +49,7 @@ public class DetFilmActivity extends AppCompatActivity {
         edad = findViewById(R.id.dfEdad);
         duracion = findViewById(R.id.dfDuracion);
         btnDescrip = findViewById(R.id.dfbtnDescrip);
+        btnVolver = findViewById(R.id.dfbtnVolver);
         btnSesions = findViewById(R.id.dfbtnVerSesiones);
         cbCartelera = findViewById(R.id.cbEnCartelera);
         img = findViewById(R.id.dfImg);
@@ -57,16 +58,8 @@ public class DetFilmActivity extends AppCompatActivity {
         genero.setText("Genero: " + film.getGenero());
         duracion.setText("Duración:" + film.getDuracion());
         edad.setText("Edad mínima recomendada: " + film.getEdad_min());
-        Picasso.get().load(film.getUrlImage()).into(img);//cuidao
+        Picasso.get().load(film.getUrlImage()).into(img);
 
-        btnDescrip.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("DESCRIPCION:");
-            builder.setMessage(film.getDescrip());
-            builder.setNeutralButton("Cerrar", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        });
 
         //TODO puc que fer o que mostre algo de sesiones no disponible o desactivar el boton o ferlo amagat, ademés de que els admins puguen añadir
         //TODO BOTON APAGAT SI NO TE SESION
@@ -84,13 +77,6 @@ public class DetFilmActivity extends AppCompatActivity {
             cbCartelera.setVisibility(View.INVISIBLE);
         }
 
-        btnSesions.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SesionsDispoActivity.class);
-            intent.putExtra("film", tituloFrom);
-            intent.putExtra("user",userName);
-            startActivity(intent);
-        });
-
         cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -102,5 +88,28 @@ public class DetFilmActivity extends AppCompatActivity {
             }
         });
 
+        //BOTONES
+        btnSesions.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SesionsDispoActivity.class);
+            intent.putExtra("film", tituloFrom);
+            intent.putExtra("user",userName);
+            startActivity(intent);
+        });
+
+        btnDescrip.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("DESCRIPCION:");
+            builder.setMessage(film.getDescrip());
+            builder.setNeutralButton("Cerrar", null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        btnVolver.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user",userName);
+            Toast.makeText(this, "Volviendo a la cartelera", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        });
     }
 }
