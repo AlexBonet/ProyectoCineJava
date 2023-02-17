@@ -1,7 +1,10 @@
 package es.alexbonet.tetsingrealm.db;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
+import es.alexbonet.tetsingrealm.model.Butaca;
 import es.alexbonet.tetsingrealm.model.Entrada;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.Sala;
@@ -118,6 +121,10 @@ public class Controller {
         return connect.where(Entrada.class).findAll();
     }
 
+    public RealmResults<Entrada> getAllEntradasFromSesion(Realm connect, String id_sesion){
+        return connect.where(Entrada.class).equalTo("id_sesion", id_sesion).findAll();
+    }
+
     public void createEntrada(Realm connect, Entrada entrada){
         Entrada e = entrada;
         e.setId_entrada(UUID.randomUUID().toString());
@@ -139,6 +146,16 @@ public class Controller {
         connect.beginTransaction();
         connect.copyToRealm(v);
         connect.commitTransaction();
+    }
+
+
+    public List<Butaca> getAllButacasOcupadasDeSala(Realm connect, String id_sesion){
+        RealmResults<Entrada> entradas = getAllEntradasFromSesion(connect, id_sesion);
+        List<Butaca> butacas = new LinkedList<>();
+        for(Entrada e : entradas){
+            butacas.add(new Butaca(e.getNum_fila(), e.getNum_butaca(), getAllSesionFromID(connect, id_sesion).getNum_sala()));
+        }
+        return butacas;
     }
 
 

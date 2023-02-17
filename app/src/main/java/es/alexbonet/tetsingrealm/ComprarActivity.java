@@ -104,19 +104,18 @@ public class ComprarActivity extends AppCompatActivity{
             builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     Toast.makeText(ComprarActivity.this, "REALIZANDO COMPRA", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(() -> {
-                        //TODO PROGRES BAR
-                        progressBar.setVisibility(View.VISIBLE);
                         //Crea totes les entrades
+                        int num_entrada = c.getAllEntradas(connect).size();
                         for (Butaca b : butacas){
-                            int num_entrada = c.getAllEntradas(connect).size();
-                            c.createEntrada(connect, new Entrada(num_entrada, b.getFila(), b.getColunna(), sala.getNum_sala()));
-                            if (!user.getTipo().equals(UserType.CLIENTE.getString())){
-                                c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, username, new Date(System.currentTimeMillis())));
-                            }else{
-                                c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, "AUTOSERVICIO", new Date(System.currentTimeMillis())));
-                            }
+                            c.createEntrada(connect, new Entrada(c.getAllEntradas(connect).size(), b.getFila(), b.getColunna(), id_sesion));
                             //TODO FILE ENTRADA  descargar la entrada y la factura
+                        }
+                        if (!user.getTipo().equals(UserType.CLIENTE.getString())){
+                            c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, username, new Date(System.currentTimeMillis())));
+                        }else{
+                            c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, "AUTOSERVICIO", new Date(System.currentTimeMillis())));
                         }
                         //Intent
                         Intent intent = new Intent(ComprarActivity.this, MainActivity.class);

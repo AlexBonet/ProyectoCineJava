@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Numero de venta:"
+        android:text="Nº venta:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="777"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="40sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/vv1"
         app:layout_constraintStart_toStartOf="@+id/vv1"
         app:layout_constraintTop_toBottomOf="@+id/vv1" />
@@ -31,6 +31,7 @@
         android:id="@+id/vv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="Vendida por:"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,20 +64,33 @@
         android:id="@+id/vvFecha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:text="Fri Dec 17 16:07:15 GMT 2021 "
-        app:layout_constraintBottom_toBottomOf="@+id/vvNum"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/vv3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/vv3"
-        app:layout_constraintTop_toBottomOf="@+id/vv1" />
+        app:layout_constraintTop_toBottomOf="@+id/vv2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/vvPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:text="11€"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vvNum" />
+        app:layout_constraintBottom_toBottomOf="@+id/vvNum"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/vv1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Importe:"
+        app:layout_constraintBottom_toBottomOf="@+id/vv1"
+        app:layout_constraintEnd_toStartOf="@+id/vvVendedor"
+        app:layout_constraintStart_toEndOf="@+id/vv1"
+        app:layout_constraintTop_toTopOf="@+id/vv1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

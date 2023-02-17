@@ -93,7 +93,7 @@ public class IniciarDB {
 
         //     public Entrada(int num_entrada, int num_fila, int num_butaca, int num_sala) {
         Entrada [] entradas = new Entrada[]{
-                new Entrada(0,0,0,0)
+                new Entrada(0,0,0,"0")
         };
 
         for (Entrada e : entradas) {

@@ -36,7 +36,7 @@ public class SalaActivity extends AppCompatActivity {
     private Button btnComprar, btnCancelar;
     private TextView informacion;
     private TableLayout mainTable;
-    private List<Butaca> butacas;
+    private List<Butaca> butacas, butacasOcupasdas;
     private Sala sala;
     private Sesion sesion;
     private Usuario user;
@@ -67,9 +67,8 @@ public class SalaActivity extends AppCompatActivity {
 
         //TABLA DE BUTACAS
         mainTable = findViewById(R.id.salaTable);
-//        listaDeButacas = new LinkedList<>();
         butacas = new LinkedList<>();
-//        listaDeButacasOcupadas = new LinkedList<>();
+        butacasOcupasdas = c.getAllButacasOcupadasDeSala(connect,id_sesion);
 
         TableLayout contTable = new TableLayout(this);
         contTable.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -85,14 +84,22 @@ public class SalaActivity extends AppCompatActivity {
                 cb.setGravity(Gravity.CENTER);
                 cb.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
                 cb.setId(++contador);
+
+                for(Butaca b : butacasOcupasdas){
+                    if(b.getColunna() == j+1 && b.getFila() == i+1){
+                        cb.setChecked(false);
+                        cb.setEnabled(false);
+                        cb.setButtonDrawable(R.drawable.baseline_chair_24_gris);
+                    }
+                }
                 cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         int num_fila = 1;
                         int num_columna = buttonView.getId();
 
-                        for (int k = 2, g = sala.getColumnas(); k <= sala.getFilas(); k++, g+=7) {
-                            if (num_columna >= 1+g && num_columna <= 7+g){
+                        for (int k = 2, g = sala.getColumnas(); k <= sala.getFilas(); k++, g+= sala.getColumnas()) {
+                            if (num_columna >= 1+g && num_columna <= sala.getColumnas()+g){
                                 num_columna -= g;
                                 num_fila = k;
                             }
@@ -103,6 +110,7 @@ public class SalaActivity extends AppCompatActivity {
                             butacas.add(butaca);
                         }else{
                             butacas.remove(butaca);
+                            butacas.remove(butacas.size()-1);
                         }
                     }
                 });
@@ -150,21 +158,26 @@ public class SalaActivity extends AppCompatActivity {
         });
 
         btnComprar.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("SEGURO QUE QUIERES COMPRAR ESTAS ENTRADAS");
-            builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(SalaActivity.this, ComprarActivity.class);
-                    RecuentoButacas butacas = new RecuentoButacas(SalaActivity.this.butacas);
-                    intent.putExtra("butacas", butacas);
-                    intent.putExtra("user", username);
-                    intent.putExtra("sesion",sesion.getId_sesion()); //EN ESTO PASE LA SALA Y LA PELI
-                    startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("CANCELAR", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
+            if (butacas.size() > 0){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("SEGURO QUE QUIERES COMPRAR ESTAS ENTRADAS");
+                builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(SalaActivity.this, ComprarActivity.class);
+                        RecuentoButacas butacas = new RecuentoButacas(SalaActivity.this.butacas);
+                        intent.putExtra("butacas", butacas);
+                        intent.putExtra("user", username);
+                        intent.putExtra("sesion",sesion.getId_sesion()); //EN ESTO PASE LA SALA Y LA PELI
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("CANCELAR", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            } else {
+                Toast.makeText(this, "ELIGE SU ASIENTO", Toast.LENGTH_SHORT).show();
+            }
+
         });
     }
 }

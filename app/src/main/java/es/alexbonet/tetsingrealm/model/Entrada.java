@@ -11,21 +11,21 @@ public class Entrada extends RealmObject implements Serializable {
     private int num_entrada;
     private int num_fila;
     private int num_butaca;
-    private int num_sala;
+    private String id_sesion;
 
-    public Entrada(String id_entrada, int num_entrada, int num_fila, int num_butaca, int num_sala) {
+    public Entrada(String id_entrada, int num_entrada, int num_fila, int num_butaca, String id_sesion) {
         this.id_entrada = id_entrada;
         this.num_entrada = num_entrada;
         this.num_fila = num_fila;
         this.num_butaca = num_butaca;
-        this.num_sala = num_sala;
+        this.id_sesion = id_sesion;
     }
 
-    public Entrada(int num_entrada, int num_fila, int num_butaca, int num_sala) {
+    public Entrada(int num_entrada, int num_fila, int num_butaca, String id_sesion) {
         this.num_entrada = num_entrada;
         this.num_fila = num_fila;
         this.num_butaca = num_butaca;
-        this.num_sala = num_sala;
+        this.id_sesion = id_sesion;
     }
 
     public Entrada() {
@@ -63,11 +63,11 @@ public class Entrada extends RealmObject implements Serializable {
         this.num_butaca = num_butaca;
     }
 
-    public int getNum_sala() {
-        return num_sala;
+    public String getId_sesion() {
+        return id_sesion;
     }
 
-    public void setNum_sala(int num_sala) {
-        this.num_sala = num_sala;
+    public void setId_sesion(String id_sesion) {
+        this.id_sesion = id_sesion;
     }
 }
