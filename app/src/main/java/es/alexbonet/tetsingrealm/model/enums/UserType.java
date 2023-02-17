@@ -1,4 +1,4 @@
-package es.alexbonet.tetsingrealm.model;
+package es.alexbonet.tetsingrealm.model.enums;
 
 public enum UserType {
     ADMINISTRADOR("ADMINISTRADOR"),

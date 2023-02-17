@@ -151,7 +151,7 @@ public class SalaActivity extends AppCompatActivity {
 
         btnComprar.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("SEGURO QUE QUIERES CONTAR ESTAS ENTRADAS");
+            builder.setTitle("SEGURO QUE QUIERES COMPRAR ESTAS ENTRADAS");
             builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     Intent intent = new Intent(SalaActivity.this, ComprarActivity.class);

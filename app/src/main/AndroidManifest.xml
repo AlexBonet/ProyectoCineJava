@@ -15,6 +15,13 @@
         android:theme="@style/Theme.TetsingRealm"
         tools:targetApi="31">
         <activity
+            android:name=".VerVentasActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ComprarActivity"
             android:exported="false">
             <meta-data

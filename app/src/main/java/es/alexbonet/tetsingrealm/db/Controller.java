@@ -2,10 +2,12 @@ package es.alexbonet.tetsingrealm.db;
 
 import java.util.UUID;
 
+import es.alexbonet.tetsingrealm.model.Entrada;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.Sala;
 import es.alexbonet.tetsingrealm.model.Sesion;
 import es.alexbonet.tetsingrealm.model.Usuario;
+import es.alexbonet.tetsingrealm.model.Venta;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -110,4 +112,34 @@ public class Controller {
         connect.copyToRealm(s);
         connect.commitTransaction();
     }
+
+    // ENTRADACONTROLLER C + R
+    public RealmResults<Entrada> getAllEntradas(Realm connect){
+        return connect.where(Entrada.class).findAll();
+    }
+
+    public void createEntrada(Realm connect, Entrada entrada){
+        Entrada e = entrada;
+        e.setId_entrada(UUID.randomUUID().toString());
+
+        connect.beginTransaction();
+        connect.copyToRealm(e);
+        connect.commitTransaction();
+    }
+
+    // VENTACONTROLLER C + R
+    public RealmResults<Venta> getAllVentas(Realm connect){
+        return connect.where(Venta.class).findAll();
+    }
+
+    public void createVenta(Realm connect, Venta venta){
+        Venta v = venta;
+        v.setId_venta(UUID.randomUUID().toString());
+
+        connect.beginTransaction();
+        connect.copyToRealm(v);
+        connect.commitTransaction();
+    }
+
+
 }

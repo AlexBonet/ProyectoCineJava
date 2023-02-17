@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +19,7 @@ import es.alexbonet.tetsingrealm.RecyclerView.FilmsRVAdapter;
 import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
-import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.enums.UserType;
 import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
@@ -100,6 +99,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             case (R.id.am_allFilms):
                 intent = new Intent(this, AllFilmsActivity.class);
+                intent.putExtra("user",userName);
+                startActivity(intent);
+                return true;
+            case (R.id.am_allVentas):
+                intent = new Intent(this, VerVentasActivity.class);
                 intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;

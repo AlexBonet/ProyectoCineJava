@@ -1,10 +1,15 @@
 package es.alexbonet.tetsingrealm.db;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+import es.alexbonet.tetsingrealm.model.Entrada;
 import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.Sala;
-import es.alexbonet.tetsingrealm.model.SalaType;
+import es.alexbonet.tetsingrealm.model.Venta;
+import es.alexbonet.tetsingrealm.model.enums.SalaType;
 import es.alexbonet.tetsingrealm.model.Sesion;
-import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.enums.UserType;
 import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
@@ -84,6 +89,24 @@ public class IniciarDB {
 
         for (Sesion s : sesions) {
             c.createSesion(connect, s);
+        }
+
+        //     public Entrada(int num_entrada, int num_fila, int num_butaca, int num_sala) {
+        Entrada [] entradas = new Entrada[]{
+                new Entrada(0,0,0,0)
+        };
+
+        for (Entrada e : entradas) {
+            c.createEntrada(connect, e);
+        }
+
+        //     public Venta(int num_venta, int num_entrada, int importe, String nombre_empleado, Date hora) {
+        Venta [] ventas = new Venta[]{
+            new Venta(0,0,0,"admin",new Date(23,1,17,0,0,0))
+        };
+
+        for (Venta v : ventas) {
+            c.createVenta(connect, v);
         }
 
     }

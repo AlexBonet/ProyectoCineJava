@@ -17,15 +17,15 @@ import java.util.List;
 import es.alexbonet.tetsingrealm.R;
 import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.model.Film;
-import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.enums.UserType;
 import io.realm.Realm;
 
 public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHolder>{
     private Controller c = new Controller();
     private LayoutInflater inflater;
     private View.OnClickListener onClickListener;
-    private List<Film> pelisCartrelera;
     private Realm connect;
+    private List<Film> pelisCartrelera;
     private String userName;
 
     public FilmsRVAdapter(Context context, List<Film> pelisCartrelera, Realm connect, String userName){
@@ -62,7 +62,6 @@ public class FilmsRVAdapter extends RecyclerView.Adapter<FilmsRVAdapter.ViewHold
                 holder.cartele.setVisibility(View.INVISIBLE);
             }
         }
-
     }
 
     @Override

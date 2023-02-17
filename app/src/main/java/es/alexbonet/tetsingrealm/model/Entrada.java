@@ -9,20 +9,23 @@ public class Entrada extends RealmObject implements Serializable {
     private String id_entrada;
     @PrimaryKey
     private int num_entrada;
-    private String fila;
-    private String butaca;
+    private int num_fila;
+    private int num_butaca;
+    private int num_sala;
 
-    public Entrada(String id_entrada, int num_entrada, String fila, String butaca) {
+    public Entrada(String id_entrada, int num_entrada, int num_fila, int num_butaca, int num_sala) {
         this.id_entrada = id_entrada;
         this.num_entrada = num_entrada;
-        this.fila = fila;
-        this.butaca = butaca;
+        this.num_fila = num_fila;
+        this.num_butaca = num_butaca;
+        this.num_sala = num_sala;
     }
 
-    public Entrada(int num_entrada, String fila, String butaca) {
+    public Entrada(int num_entrada, int num_fila, int num_butaca, int num_sala) {
         this.num_entrada = num_entrada;
-        this.fila = fila;
-        this.butaca = butaca;
+        this.num_fila = num_fila;
+        this.num_butaca = num_butaca;
+        this.num_sala = num_sala;
     }
 
     public Entrada() {
@@ -44,19 +47,27 @@ public class Entrada extends RealmObject implements Serializable {
         this.num_entrada = num_entrada;
     }
 
-    public String getFila() {
-        return fila;
+    public int getNum_fila() {
+        return num_fila;
     }
 
-    public void setFila(String fila) {
-        this.fila = fila;
+    public void setNum_fila(int num_fila) {
+        this.num_fila = num_fila;
     }
 
-    public String getButaca() {
-        return butaca;
+    public int getNum_butaca() {
+        return num_butaca;
     }
 
-    public void setButaca(String butaca) {
-        this.butaca = butaca;
+    public void setNum_butaca(int num_butaca) {
+        this.num_butaca = num_butaca;
+    }
+
+    public int getNum_sala() {
+        return num_sala;
+    }
+
+    public void setNum_sala(int num_sala) {
+        this.num_sala = num_sala;
     }
 }

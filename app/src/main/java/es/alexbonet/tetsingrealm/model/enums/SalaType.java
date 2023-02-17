@@ -1,4 +1,4 @@
-package es.alexbonet.tetsingrealm.model;
+package es.alexbonet.tetsingrealm.model.enums;
 
 public enum SalaType {
     NORMAL("2D",7), TRESD("3D",9), CUATRODX("4DX",11);

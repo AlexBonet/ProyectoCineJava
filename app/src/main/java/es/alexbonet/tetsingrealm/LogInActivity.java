@@ -3,7 +3,6 @@ package es.alexbonet.tetsingrealm;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.db.IniciarDB;
 import es.alexbonet.tetsingrealm.model.Usuario;
-import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.enums.UserType;
 import io.realm.Realm;
 
 public class LogInActivity extends AppCompatActivity {

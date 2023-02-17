@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Film;
-import es.alexbonet.tetsingrealm.model.UserType;
+import es.alexbonet.tetsingrealm.model.enums.UserType;
 import io.realm.Realm;
 
 public class DetFilmActivity extends AppCompatActivity {
@@ -60,9 +60,10 @@ public class DetFilmActivity extends AppCompatActivity {
         edad.setText("Edad mínima recomendada: " + film.getEdad_min());
         Picasso.get().load(film.getUrlImage()).into(img);
 
-
-        //TODO BOTON APAGAT SI NO TE SESION
-
+        //Apagar el botón de ver sesiones si no hay
+        if (c.getAllSesionFromAFilm(connect,tituloFrom).size() < 1){
+            btnSesions.setEnabled(false);
+        }
 
         //Si la peli esta en cartelera se marca con el check
         if (film.isEn_cartelera()){
@@ -76,6 +77,7 @@ public class DetFilmActivity extends AppCompatActivity {
             cbCartelera.setVisibility(View.INVISIBLE);
         }
 
+        //CheckBox para poner o quitar una pelicula de la cartelera
         cbCartelera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

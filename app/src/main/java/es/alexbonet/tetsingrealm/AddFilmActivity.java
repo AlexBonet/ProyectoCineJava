@@ -3,7 +3,6 @@ package es.alexbonet.tetsingrealm;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +13,7 @@ import android.widget.Toast;
 
 import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
-import es.alexbonet.tetsingrealm.db.IniciarDB;
 import es.alexbonet.tetsingrealm.model.Film;
-import es.alexbonet.tetsingrealm.model.UserType;
-import es.alexbonet.tetsingrealm.model.Usuario;
 import io.realm.Realm;
 
 public class AddFilmActivity extends AppCompatActivity {
