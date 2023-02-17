@@ -2,16 +2,21 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - botes comprar en la sala
-  - añadir botons de atras o cancelar ¿A ON MÉS?
+  - CREAR CLASES VENTA Y ENTRADAS
+  - Comprar entradas
+  - Crear sesiones ?? NO FICA RES
+  - fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
   - en detFilms comprobar si una peli te sesions, per a activar o no el boton
   - ¿si he comprat una entrada se cambia?
   
-MES COSES:
+MES COSES:  
+  - se me ha oblidat algo
   - !!!!!!CUIDADO!!!!!!!  
         userName = getIntent().getExtras().getString("user");
         //AÑADIR
         intent.putExtra("user",userName);
+  - añadir botons de atras o cancelar ¿A ON MÉS?
+
 
 
 MEMORIA:
