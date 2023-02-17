@@ -2,7 +2,8 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - botes comprar en la sala
+  - Quitar TODOs
+  - Comprar entradas
   - añadir botons de atras o cancelar ¿A ON MÉS?
   - en detFilms comprobar si una peli te sesions, per a activar o no el boton
   - ¿si he comprat una entrada se cambia?
