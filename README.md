@@ -2,11 +2,9 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - Comprar entradas
-  - ver ventas
+  - SI seleccionem i deseleccionem una butaca se va añadint
   - Crear sesiones ?? NO FICA RES
-  - fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
-  - ¿si he comprat una entrada se cambia?
+  -   fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
   
 MES COSES:  
   - !!!!!!CUIDADO!!!!!!!  
