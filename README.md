@@ -2,7 +2,6 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - CREAR CLASES VENTA Y ENTRADAS
   - Comprar entradas
   - Crear sesiones ?? NO FICA RES
   - fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
@@ -16,6 +15,7 @@ MES COSES:
         //AÑADIR
         intent.putExtra("user",userName);
   - añadir botons de atras o cancelar ¿A ON MÉS?
+  - el cliente pot vore les entrades que té??
 
 
 
