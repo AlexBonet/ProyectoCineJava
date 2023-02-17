@@ -31,7 +31,7 @@ public class CompraRVAdapter extends RecyclerView.Adapter<CompraRVAdapter.ViewHo
     @NonNull
     @Override
     public CompraRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.film_view_cartelera,parent,false);
+        View view = inflater.inflate(R.layout.compra_view,parent,false);
         view.setOnClickListener(onClickListener);
         return new CompraRVAdapter.ViewHolder(view);
     }
@@ -39,8 +39,8 @@ public class CompraRVAdapter extends RecyclerView.Adapter<CompraRVAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull CompraRVAdapter.ViewHolder holder, int position) {
         Butaca b = butacas.get(position);
-        holder.fila.setText("SIZE:" + butacas.size() + "????");
-        //holder.butaca.setText("" + butacas.size());
+        holder.fila.setText("" + b.getFila());
+        holder.butaca.setText("" + b.getColunna());
         holder.precio.setText(precio + "€");
     }
 

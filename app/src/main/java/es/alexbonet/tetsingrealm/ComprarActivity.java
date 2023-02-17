@@ -49,6 +49,9 @@ public class ComprarActivity extends AppCompatActivity{
         //Obtener datos de otras actividades
         username = getIntent().getExtras().getString("user");
         id_sesion = getIntent().getExtras().getString("sesion");
+        butacas = ((RecuentoButacas) getIntent().getSerializableExtra("butacas")).getButacas();
+
+        //Iniciar Objetoys
         sesion = c.getAllSesionFromID(connect, id_sesion);
         user = c.getUser(connect, username);
         sala = c.getSala(connect, sesion.getNum_sala());
@@ -63,18 +66,10 @@ public class ComprarActivity extends AppCompatActivity{
         }
 
         //Obtener vistas
-        butacas = ((RecuentoButacas) getIntent().getSerializableExtra("butacas")).getButacas();
         precioTotal = findViewById(R.id.cTotal);
         btnCancelar = findViewById(R.id.cbtnCancelar);
         btnComprar = findViewById(R.id.cbtnComprar);
         recyclerView = findViewById(R.id.RVCompra);
-
-        //Recycler view TODO ARREGLAR
-//        compraRVAdapter = new CompraRVAdapter(this, butacas, preu);
-//        recyclerView.setAdapter(compraRVAdapter);
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearLayoutManager);
 
         //Calcular el precio toal
         for (Butaca b : butacas){
@@ -96,5 +91,13 @@ public class ComprarActivity extends AppCompatActivity{
             // Crear entrada y venta
             // Intent a un ticket que te dixe descargar la entrada y la factura
         });
+
+        //Recycler view TODO ARREGLAR
+        compraRVAdapter = new CompraRVAdapter(this, butacas, preu);
+        recyclerView.setAdapter(compraRVAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
     }
 }

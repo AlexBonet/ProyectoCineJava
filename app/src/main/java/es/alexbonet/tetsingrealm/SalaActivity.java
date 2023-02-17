@@ -3,7 +3,6 @@ package es.alexbonet.tetsingrealm;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import java.util.List;
 import es.alexbonet.tetsingrealm.db.Controller;
 import es.alexbonet.tetsingrealm.db.DataBase;
 import es.alexbonet.tetsingrealm.model.Butaca;
-import es.alexbonet.tetsingrealm.model.Film;
 import es.alexbonet.tetsingrealm.model.RecuentoButacas;
 import es.alexbonet.tetsingrealm.model.Sala;
 import es.alexbonet.tetsingrealm.model.Sesion;
@@ -38,8 +36,7 @@ public class SalaActivity extends AppCompatActivity {
     private Button btnComprar, btnCancelar;
     private TextView informacion;
     private TableLayout mainTable;
-    private List<Integer> listaDeButacas; //TODO CAMBIAR NOM DE LA LIST
-    private List<Butaca> asientosOcupados, listaDeButacasOcupadas;
+    private List<Butaca> butacas;
     private Sala sala;
     private Sesion sesion;
     private Usuario user;
@@ -70,9 +67,9 @@ public class SalaActivity extends AppCompatActivity {
 
         //TABLA DE BUTACAS
         mainTable = findViewById(R.id.salaTable);
-        listaDeButacas = new LinkedList<>();
-        asientosOcupados = new LinkedList<>();
-        listaDeButacasOcupadas = new LinkedList<>();
+//        listaDeButacas = new LinkedList<>();
+        butacas = new LinkedList<>();
+//        listaDeButacasOcupadas = new LinkedList<>();
 
         TableLayout contTable = new TableLayout(this);
         contTable.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -91,21 +88,21 @@ public class SalaActivity extends AppCompatActivity {
                 cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        int posibleY = 1;
-                        int posibleX = buttonView.getId();
+                        int num_fila = 1;
+                        int num_columna = buttonView.getId();
 
-                        for (int k = 2, g = sala.getColumnas(); k <= sala.getFilas(); k++, g+=5) {
-                            if (posibleX >= 1+g && posibleX <= 5+g){
-                                posibleX -= g;
-                                posibleY = k;
+                        for (int k = 2, g = sala.getColumnas(); k <= sala.getFilas(); k++, g+=7) {
+                            if (num_columna >= 1+g && num_columna <= 7+g){
+                                num_columna -= g;
+                                num_fila = k;
                             }
                         }
 
-                        Butaca butaca = new Butaca(posibleX, posibleY, sala.getNum_sala());
+                        Butaca butaca = new Butaca(num_fila, num_columna, sala.getNum_sala());
                         if(isChecked){
-                            asientosOcupados.add(butaca);
+                            butacas.add(butaca);
                         }else{
-                            asientosOcupados.remove(butaca);
+                            butacas.remove(butaca);
                         }
                     }
                 });
@@ -158,7 +155,7 @@ public class SalaActivity extends AppCompatActivity {
             builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     Intent intent = new Intent(SalaActivity.this, ComprarActivity.class);
-                    RecuentoButacas butacas = new RecuentoButacas(asientosOcupados);
+                    RecuentoButacas butacas = new RecuentoButacas(SalaActivity.this.butacas);
                     intent.putExtra("butacas", butacas);
                     intent.putExtra("user", username);
                     intent.putExtra("sesion",sesion.getId_sesion()); //EN ESTO PASE LA SALA Y LA PELI

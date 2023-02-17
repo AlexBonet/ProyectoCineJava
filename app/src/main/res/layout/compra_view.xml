@@ -9,38 +9,46 @@
         android:id="@+id/cvTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="38dp"
         android:text="Bucata:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cvTV1"
-        app:layout_constraintTop_toBottomOf="@+id/cvTV1" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cvTV1"
+        app:layout_constraintStart_toEndOf="@+id/cvFila"
+        app:layout_constraintTop_toTopOf="@+id/cvTV1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/cvTV1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Fila: "
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="37dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cvTV3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:text="Precio:"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cvTV1"
         app:layout_constraintEnd_toStartOf="@+id/cvPrecio"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/cvTV1" />
 
     <TextView
         android:id="@+id/cvFila"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="num fila"
+        android:layout_marginStart="4dp"
+        android:text="10"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/cvTV1"
         app:layout_constraintStart_toEndOf="@+id/cvTV1"
         app:layout_constraintTop_toTopOf="@+id/cvTV1" />
@@ -49,9 +57,10 @@
         android:id="@+id/cvButaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="num butaca"
+        android:layout_marginStart="4dp"
+        android:text="10"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/cvTV2"
         app:layout_constraintStart_toEndOf="@+id/cvTV2"
         app:layout_constraintTop_toTopOf="@+id/cvTV2" />
@@ -60,10 +69,10 @@
         android:id="@+id/cvPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="50dp"
         android:text="11€"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/cvTV3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cvTV3" />
