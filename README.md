@@ -2,7 +2,6 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO 16/02/2023
-  - SI seleccionem i deseleccionem una butaca se va añadint
   - Crear sesiones ?? NO FICA RES
   -   fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
   
