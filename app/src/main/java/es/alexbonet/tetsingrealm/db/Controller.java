@@ -159,4 +159,12 @@ public class Controller {
     }
 
 
+    public void deleteSesion(Realm connect, String id_sesion) {
+        Sesion s;
+        if((s = getAllSesionFromID(connect, id_sesion)) != null){
+            connect.beginTransaction();
+            s.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
 }

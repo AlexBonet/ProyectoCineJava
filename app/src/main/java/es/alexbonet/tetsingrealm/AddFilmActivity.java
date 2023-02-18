@@ -43,7 +43,7 @@ public class AddFilmActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.afbtnInsertar);
         btnCancelar = findViewById(R.id.afbtnCancelar);
         btnCancelar.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, AllFilmsActivity.class);
             intent.putExtra("user",userName);
             startActivity(intent);
         });

@@ -27,7 +27,7 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
     private FilmsRVAdapter filmsRvAdapter;
     private List<Film> filmList;
     private String userName;
-    private Button btnvolver;
+    private Button btnvolver, btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,17 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
 
         textView = findViewById(R.id.allFTextView);
         btnvolver = findViewById(R.id.allFbtnVolver);
+        btnAdd = findViewById(R.id.allFbtnAddF);
 
         btnvolver.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user",userName);
+            Toast.makeText(this, "Volviendo a la cartelera", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        });
+
+        btnAdd.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddFilmActivity.class);
             intent.putExtra("user",userName);
             Toast.makeText(this, "Volviendo a la cartelera", Toast.LENGTH_SHORT).show();
             startActivity(intent);

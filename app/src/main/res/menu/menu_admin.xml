@@ -16,15 +16,15 @@
                 app:showAsAction="ifRoom"
                 />
             <item
-                android:id="@+id/am_addFilm"
-                android:icon="@drawable/ic_twotone_add_photo_alternate_24"
-                android:title="AÑADIR PELICULA"
+                android:id="@+id/am_gestion_film"
+                android:icon="@drawable/ic_twotone_movie_creation_24"
+                android:title="GESTIONAR PELICULAS"
                 app:showAsAction="ifRoom"
                 />
             <item
-                android:id="@+id/am_allFilms"
-                android:icon="@drawable/ic_twotone_movie_creation_24"
-                android:title="VER TODAS LAS PELICULAS"
+                android:id="@+id/am_gestion_sesion"
+                android:icon="@drawable/ic_baseline_airplay_24"
+                android:title="GESTIONAR SESIONES"
                 app:showAsAction="ifRoom"
                 />
             <item

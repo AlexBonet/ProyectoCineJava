@@ -92,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;
-            case (R.id.am_addFilm):
-                intent = new Intent(this, AddFilmActivity.class);
+            case (R.id.am_gestion_film):
+                intent = new Intent(this, AllFilmsActivity.class);
                 intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;
-            case (R.id.am_allFilms):
-                intent = new Intent(this, AllFilmsActivity.class);
+            case (R.id.am_gestion_sesion):
+                intent = new Intent(this, AllSesionsActivity.class);
                 intent.putExtra("user",userName);
                 startActivity(intent);
                 return true;
