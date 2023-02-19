@@ -2,9 +2,6 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO
-  - añadir sesiones
-  - cambiar un gestor_sesion_view, donar més importacia a la peli y menos a la hora, tindre com 4 sectors(horizontal layout??)
-  -   fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
   - que se descargue la entrada en .txt
   
 MES COSES:  
