@@ -35,7 +35,7 @@ public class AllSesionsActivity extends AppCompatActivity implements View.OnClic
     private List<Sesion> sesionList;
     private Realm connect;
     private RecyclerView recyclerView;
-    private String peli, username;
+    private String username;
     private Button btnVolver, btnAdd;
 
     @Override
@@ -49,7 +49,6 @@ public class AllSesionsActivity extends AppCompatActivity implements View.OnClic
         btnAdd = findViewById(R.id.allSAdd);
 
         username = getIntent().getExtras().getString("user");
-        peli = getIntent().getExtras().getString("film");
 
 
         //RECYCLERVIEW
@@ -65,7 +64,12 @@ public class AllSesionsActivity extends AppCompatActivity implements View.OnClic
 
         btnVolver.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            intent.putExtra("film",peli);
+            intent.putExtra("user",username);
+            startActivity(intent);
+        });
+
+        btnAdd.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(),AddSesionActivity.class);
             intent.putExtra("user",username);
             startActivity(intent);
         });
@@ -82,7 +86,6 @@ public class AllSesionsActivity extends AppCompatActivity implements View.OnClic
                 c.deleteSesion(connect, sesionList.get(posi).getId_sesion());
                 Toast.makeText(AllSesionsActivity.this, "ELIMINANDO", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(),AllSesionsActivity.class);
-                intent.putExtra("film",peli);
                 intent.putExtra("user",username);
                 startActivity(intent);
             }

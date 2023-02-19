@@ -76,7 +76,7 @@ public class AddFilmActivity extends AppCompatActivity {
                                 url[0] = "https://cdn.kinepolis.es/images/ES/65459BAD-CA99-4711-A97B-E049A5FA94D2/HO00004169/0000006071/Miki_Dkai:_Cassalla_Festes_i_Humor..._.jpg";
                             }
                             c.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, url[0]));
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), AllFilmsActivity.class);
                             intent.putExtra("user",userName);
                             startActivity(intent);
                         }

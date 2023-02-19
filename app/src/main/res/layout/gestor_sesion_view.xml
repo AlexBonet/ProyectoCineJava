@@ -6,41 +6,17 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/gsTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="4DX"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/gsHora"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gsHora" />
-
-    <TextView
-        android:id="@+id/gsSala"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="Sala: 77"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/gsTipo"
-        app:layout_constraintEnd_toStartOf="@+id/gsTipo"
-        app:layout_constraintTop_toTopOf="@+id/gsTipo" />
-
-    <TextView
         android:id="@+id/gsTitulo"
-        android:layout_width="0dp"
+        android:layout_width="174dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="ASTÉRIX Y OBÉLIX: EL REINO MEDIO&quot;, &quot;ASTÉRIX Y OBÉLIX"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,12 +24,45 @@
         android:id="@+id/gsHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="100dp"
         android:text="22:22"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="@+id/gsTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gsTitulo" />
+        app:layout_constraintTop_toTopOf="@+id/gsTitulo" />
+
+    <TextView
+        android:id="@+id/gsSala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Sala: 77"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/gsTipo"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/gsTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4DX"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/gsHora"
+        app:layout_constraintEnd_toEndOf="@+id/gsSala"
+        app:layout_constraintStart_toStartOf="@+id/gsSala"
+        app:layout_constraintTop_toTopOf="@+id/gsHora" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Hora"
+        app:layout_constraintBottom_toTopOf="@+id/gsHora"
+        app:layout_constraintEnd_toEndOf="@+id/gsHora"
+        app:layout_constraintStart_toStartOf="@+id/gsHora" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

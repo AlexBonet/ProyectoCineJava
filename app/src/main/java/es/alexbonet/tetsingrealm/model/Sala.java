@@ -70,4 +70,9 @@ public class Sala extends RealmObject implements Serializable {
     public void setTipo_sala(String tipo_sala) {
         this.tipo_sala = tipo_sala;
     }
+
+    @Override
+    public String toString() {
+        return this.num_sala + " - " + this.tipo_sala;
+    }
 }
