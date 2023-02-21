@@ -38,7 +38,7 @@ public class VentaRVAdapter extends RecyclerView.Adapter<VentaRVAdapter.ViewHold
         holder.num_venta.setText(""+ v.getNum_venta());
         holder.vendedor.setText(""+ v.getNombre_empleado());
         holder.fecha.setText(""+ v.getHora());
-        holder.precio.setText(""+ v.getImporte());
+        holder.precio.setText(v.getImporte() + "€");
     }
 
     public void setOnClickListener(View.OnClickListener onClickListener) {
