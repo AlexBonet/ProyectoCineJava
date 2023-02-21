@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+/**
+ * ACTIVIDAD DE TEST
+ */
 public class SecondActivity extends AppCompatActivity {
 
     private TextView textView;
@@ -30,9 +33,5 @@ public class SecondActivity extends AppCompatActivity {
             dia = new Date(diaL);
             textView.setText("DIA:\n " + dia + "\n" + diaL);
         }
-
-
-
-
     }
 }
