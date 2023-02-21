@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/ic_baseline_account_box_24"
+        android:title="Informacion de cuenta"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/am_cerrarSesion"
         android:icon="@drawable/baseline_exit_to_app_24"
         android:title="CERRAR SESION"

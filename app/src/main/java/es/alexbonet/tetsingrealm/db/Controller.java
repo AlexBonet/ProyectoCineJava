@@ -15,7 +15,7 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class Controller {
-    //USERCONTROLLER C + R
+    //USERCONTROLLER
     public RealmResults<Usuario> getAllUsers(Realm connect){
         RealmResults<Usuario> usuarios = connect.where(Usuario.class).findAll();
         return usuarios;
@@ -40,7 +40,38 @@ public class Controller {
         connect.commitTransaction();
     }
 
-    //FILMCONTROLLER C + R + U
+    public void updateUser(Realm connect, Usuario usuario){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(usuario);
+        connect.commitTransaction();
+    }
+
+    public void deleteUser(Realm connect, Usuario usuario){
+        Usuario u;
+        if ((u = getUser(connect, usuario.getUserName())) != null){
+            connect.beginTransaction();
+            u.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+    public void deleteUserByName(Realm connect, String userName){
+        Usuario u;
+        if ((u = getUser(connect, userName)) != null){
+            connect.beginTransaction();
+            u.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+    public void deleteUserByDNI(Realm connect, String dni){
+        Usuario u;
+        if ((u = getFromDNI(connect, dni)) != null){
+            connect.beginTransaction();
+            u.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+
+    //FILMCONTROLLER
     public RealmResults<Film> getAllFilms(Realm connect){
         RealmResults<Film> films = connect.where(Film.class).findAll();
         return films;
@@ -73,7 +104,29 @@ public class Controller {
         connect.commitTransaction();
     }
 
-    //SALACONTROLLER C + R
+    public void updateFilm(Realm connect, Film film){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(film);
+        connect.commitTransaction();
+    }
+    public void deleteFilm(Realm connect, Film film){
+        Film f;
+        if ((f = getFilmByName(connect, film.getTitulo())) != null){
+            connect.beginTransaction();
+            f.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+    public void deleteFilmName(Realm connect, String name){
+        Film f;
+        if ((f = getFilmByName(connect, name)) != null){
+            connect.beginTransaction();
+            f.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+
+    //SALACONTROLLER
     public RealmResults<Sala> getAllSalas(Realm connect){
         RealmResults<Sala> salas = connect.where(Sala.class).findAll();
         return salas;
@@ -83,8 +136,8 @@ public class Controller {
         return connect.where(Sala.class).equalTo("num_sala",numsala).findFirst();
     }
 
-    public void createSala(Realm connect, Sala film){
-        Sala s = film;
+    public void createSala(Realm connect, Sala sala){
+        Sala s = sala;
         s.setId_sala(UUID.randomUUID().toString());
 
         connect.beginTransaction();
@@ -92,7 +145,21 @@ public class Controller {
         connect.commitTransaction();
     }
 
-    //SESIONCONTROLLER C + R
+    public void updateSala(Realm connect, Sala sala){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(sala);
+        connect.commitTransaction();
+    }
+    public void deleteSala(Realm connect, Sala sala){
+        Sala s;
+        if ((s = getSala(connect, sala.getNum_sala())) != null){
+            connect.beginTransaction();
+            s.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+
+    //SESIONCONTROLLER
     public RealmResults<Sesion> getAllSesions(Realm connect){
         RealmResults<Sesion> salas = connect.where(Sesion.class).findAll();
         return salas;
@@ -116,13 +183,32 @@ public class Controller {
         connect.commitTransaction();
     }
 
-    // ENTRADACONTROLLER C + R
+    public void updateSesion(Realm connect, Sesion sesion){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(sesion);
+        connect.commitTransaction();
+    }
+
+    public void deleteSesion(Realm connect, String id_sesion) {
+        Sesion s;
+        if((s = getAllSesionFromID(connect, id_sesion)) != null){
+            connect.beginTransaction();
+            s.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+
+    // ENTRADACONTROLLER
     public RealmResults<Entrada> getAllEntradas(Realm connect){
         return connect.where(Entrada.class).findAll();
     }
 
     public RealmResults<Entrada> getAllEntradasFromSesion(Realm connect, String id_sesion){
         return connect.where(Entrada.class).equalTo("id_sesion", id_sesion).findAll();
+    }
+
+    public Entrada getEntradaByNum(Realm connect, int num){
+        return connect.where(Entrada.class).equalTo("num_entrada", num).findFirst();
     }
 
     public void createEntrada(Realm connect, Entrada entrada){
@@ -134,7 +220,21 @@ public class Controller {
         connect.commitTransaction();
     }
 
-    // VENTACONTROLLER C + R
+    public void updateEntrada(Realm connect, Entrada sala){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(sala);
+        connect.commitTransaction();
+    }
+    public void deleteEntrada(Realm connect, Entrada entrada){
+        Entrada s;
+        if ((s = getEntradaByNum(connect, entrada.getNum_entrada())) != null){
+            connect.beginTransaction();
+            s.deleteFromRealm();
+            connect.commitTransaction();
+        }
+    }
+
+    // VENTACONTROLLER
     public RealmResults<Venta> getAllVentas(Realm connect){
         return connect.where(Venta.class).findAll();
     }
@@ -148,7 +248,6 @@ public class Controller {
         connect.commitTransaction();
     }
 
-
     public List<Butaca> getAllButacasOcupadasDeSala(Realm connect, String id_sesion){
         RealmResults<Entrada> entradas = getAllEntradasFromSesion(connect, id_sesion);
         List<Butaca> butacas = new LinkedList<>();
@@ -158,13 +257,22 @@ public class Controller {
         return butacas;
     }
 
-
-    public void deleteSesion(Realm connect, String id_sesion) {
-        Sesion s;
-        if((s = getAllSesionFromID(connect, id_sesion)) != null){
+    public Venta getVenta(Realm connect, int num_venta){
+        return connect.where(Venta.class).equalTo("num_venta", num_venta).findFirst();
+    }
+    public void updateVenta(Realm connect, Venta sala){
+        connect.beginTransaction();
+        connect.copyToRealmOrUpdate(sala);
+        connect.commitTransaction();
+    }
+    public void deleteVenta(Realm connect, Venta venta){
+        Venta v;
+        if ((v = getVenta(connect, venta.getNum_venta())) != null){
             connect.beginTransaction();
-            s.deleteFromRealm();
+            v.deleteFromRealm();
             connect.commitTransaction();
         }
     }
+
+
 }

@@ -77,6 +77,7 @@ public class AddFilmActivity extends AppCompatActivity {
                             }
                             c.createFilm(connect,new Film(titulo, descrp, Integer.parseInt(duraci), Integer.parseInt(edamin), genero, enCat, url[0]));
                             Intent intent = new Intent(getApplicationContext(), AllFilmsActivity.class);
+                            Toast.makeText(AddFilmActivity.this, "PELICULA AÑADIDA", Toast.LENGTH_SHORT).show();
                             intent.putExtra("user",userName);
                             startActivity(intent);
                         }

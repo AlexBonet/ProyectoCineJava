@@ -96,7 +96,6 @@ public class AddSesionActivity extends AppCompatActivity {
         });
 
         btnAdd.setOnClickListener(view -> {
-            Toast.makeText(this, "AÑADIENDO", Toast.LENGTH_SHORT).show();
 
             num_sala = sala.getNum_sala();
             titulo = film.getTitulo();
@@ -109,6 +108,8 @@ public class AddSesionActivity extends AppCompatActivity {
                 sesion = new Sesion(num_sala, titulo, hora, ocupacion);
 
                 c.createSesion(connect, sesion);
+                Toast.makeText(this, "SESION AÑADIDA", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(getApplicationContext(),AllSesionsActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
