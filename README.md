@@ -5,7 +5,6 @@ TODO
   - que se descargue la entrada en .txt
   - eliminar peliculas, mirar com ferho, te que mostrar un toast un confirmar de alertdialog
   - en totes les activities te que tindre el menu que mostre el rol
-  - controller: todos los CRUD
   - mirar els colors corporatius
   - en ver ventas mirar que se entenga bé, que despres del preu pose €
   - definir claves ajenas en los modelos de la base de datos
@@ -20,5 +19,6 @@ MEMORIA:
   - parlar de alrt dialog
   - parlar del menu i pq els admin tenen la desitincio
   - diagrama de la base de datos
+  - dir que en el controllador se poden fer totes les operacions del crud
   - explicar q en el menu esta el boton que pot servir per al perfil pero que mostra qui esta
 
