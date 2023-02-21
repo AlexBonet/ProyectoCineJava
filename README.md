@@ -13,4 +13,6 @@ MEMORIA:
   - diagrama de la base de datos
   - dir que en el controllador se poden fer totes les operacions del crud
   - explicar q en el menu esta el boton que pot servir per al perfil pero que mostra qui esta
-
+  - colores corporativos
+    - <color name="teal_200">#FF03DAC5</color>
+    - <color name="navy">#070090</color>
