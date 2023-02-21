@@ -12,3 +12,4 @@ Apuntes para MEMORIA:
   - colores corporativos
     - <color name="teal_200">#FF03DAC5</color>
     - <color name="navy">#070090</color>
+  - com se descarga la entrada y que se veu
