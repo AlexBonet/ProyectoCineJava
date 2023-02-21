@@ -3,15 +3,12 @@ Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO
   - que se descargue la entrada en .txt
-  - en el menu de admin y empleado posar una coseta per a dintificarlos
-  - PROBAR si al añadir pelis hi ha toast de que se ha añadir
-  - eliminar peliculas, mirar com ferho
+  - eliminar peliculas, mirar com ferho, te que mostrar un toast un confirmar de alertdialog
   - en totes les activities te que tindre el menu que mostre el rol
   - controller: todos los CRUD
   - mirar els colors corporatius
   - en ver ventas mirar que se entenga bé, que despres del preu pose €
   - definir claves ajenas en los modelos de la base de datos
-  - 
   
 MES COSES:  
   - añadir molts toast
@@ -23,5 +20,5 @@ MEMORIA:
   - parlar de alrt dialog
   - parlar del menu i pq els admin tenen la desitincio
   - diagrama de la base de datos
-  - 
+  - explicar q en el menu esta el boton que pot servir per al perfil pero que mostra qui esta
 
