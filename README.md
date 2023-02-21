@@ -2,19 +2,23 @@
 Proyecto de programacion multiplataformar junto acceso a datos
 
 TODO
-  - añadir sesiones
-  - cambiar un gestor_sesion_view, donar més importacia a la peli y menos a la hora, tindre com 4 sectors(horizontal layout??)
-  -   fer tiempo de ocuapcion diferent: flow tiempo de peli + 10 (tindria que conseguir lo que dura la peli)
   - que se descargue la entrada en .txt
+  - eliminar peliculas, mirar com ferho, te que mostrar un toast un confirmar de alertdialog
+  - en totes les activities te que tindre el menu que mostre el rol
+  - controller: todos los CRUD
+  - mirar els colors corporatius
+  - en ver ventas mirar que se entenga bé, que despres del preu pose €
+  - definir claves ajenas en los modelos de la base de datos
   
 MES COSES:  
-  - !!!!!!CUIDADO!!!!!!!  
-        userName = getIntent().getExtras().getString("user");
-        //AÑADIR
-        intent.putExtra("user",userName);
+  - añadir molts toast
+  - botones de vuelta atras
 
 MEMORIA:
   - posar en la memoria que he posat el indicador de si la pelicula esta en cartelera, tambe dir que els clientes normal no ho veuen
   - advertencia de posar mal una foto en add film
   - parlar de alrt dialog
+  - parlar del menu i pq els admin tenen la desitincio
+  - diagrama de la base de datos
+  - explicar q en el menu esta el boton que pot servir per al perfil pero que mostra qui esta
 
