@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -112,13 +115,28 @@ public class ComprarActivity extends AppCompatActivity{
                         //Crea totes les entrades
                         int num_entrada = c.getAllEntradas(connect).size();
                         for (Butaca b : butacas){
-                            c.createEntrada(connect, new Entrada(c.getAllEntradas(connect).size(), b.getFila(), b.getColunna(), id_sesion));
-                            //TODO FILE ENTRADA  descargar la entrada y la factura
+                            Entrada e = new Entrada(c.getAllEntradas(connect).size(), b.getFila(), b.getColunna(), id_sesion);
+                            c.createEntrada(connect, e);
+                            String str = "*** ENTRADA " + e.getNum_entrada() + " ***\n" +
+                                    "SESION: " + sesion.getTitulo_peli() + " a las " + sesion.getHora_empieza() + " en la sala " + sesion.getNum_sala() + "\n" +
+                                    "\n - FILA: " + e.getNum_fila() + "\n - BUTACA: " + e.getNum_butaca();
+                            saveFile("entrada", e.getNum_entrada(), str);
                         }
                         if (!user.getTipo().equals(UserType.CLIENTE.getString())){
-                            c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, username, new Date(System.currentTimeMillis())));
+                            Venta v =new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, username, new Date(System.currentTimeMillis()));
+                            String str = "+++ VENTA " + v.getNum_venta() + " +++\n" +
+                                    "\n + IMPORTE TOTAL: " + v.getImporte() + "\n" +
+                                    " - VENDIDO POR: " + v.getNombre_empleado() + "\n · FECHA DE VENTA: " + v.getHora();
+
+                            c.createVenta(connect, v);
+                            saveFile("ticket", v.getNum_venta(), str);
                         }else{
-                            c.createVenta(connect, new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, "AUTOSERVICIO", new Date(System.currentTimeMillis())));
+                            Venta v = new Venta(c.getAllVentas(connect).size(),num_entrada,preuTotal, "AUTOSERVICIO", new Date(System.currentTimeMillis()));
+                            String str = "+++ VENTA " + v.getNum_venta() + " +++\n" +
+                                    "Entradas: " + num_entrada + "\nIMPORTE TOTAL: " + v.getImporte() + "\n" +
+                                    "VENDIDO POR: " + v.getNombre_empleado() + "\n FECHA DE VENTA: " + v.getHora();
+                            c.createVenta(connect, v);
+                            saveFile("ticket", v.getNum_venta(), str);
                         }
                         //Intent
                         Intent intent = new Intent(ComprarActivity.this, MainActivity.class);
@@ -192,5 +210,17 @@ public class ComprarActivity extends AppCompatActivity{
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void saveFile(String entrada, int numEntrada, String contenido){
+        try {
+            OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput(entrada + numEntrada +".txt", Activity.MODE_PRIVATE));
+            archivo.write(contenido);
+            archivo.flush();
+            archivo.close();
+        } catch (IOException e) {
+            Toast.makeText(this,"ERROR COMPRANDO", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "COMPRA CORRECTA", Toast.LENGTH_SHORT).show();
     }
 }
