@@ -13,7 +13,7 @@ public class Sesion extends RealmObject implements Serializable {
     private int num_sala;
     private String titulo_peli;
     private String hora_empieza;
-    private int ocupacion; // duracion de la pelicula + 10 //TODO QUE UN CONSTRUCTOR MIRE QUAN DURA LA PELI Y LI SUME 10
+    private int ocupacion; // duracion de la pelicula + 10
 
     public Sesion(int num_sala, String titulo_peli, String hora_empieza, int ocupacion) {
         this.num_sala = num_sala;

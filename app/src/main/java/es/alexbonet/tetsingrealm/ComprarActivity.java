@@ -150,7 +150,7 @@ public class ComprarActivity extends AppCompatActivity{
             dialog.show();
         });
 
-        //Recycler view TODO ARREGLAR
+        //Recycler view
         compraRVAdapter = new CompraRVAdapter(this, butacas, preu);
         recyclerView.setAdapter(compraRVAdapter);
 
