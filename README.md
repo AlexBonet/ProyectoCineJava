@@ -1,10 +1,7 @@
 # CineLaVereda
 Proyecto de programacion multiplataformar junto acceso a datos
 
-TODO
-  - que se descargue la entrada en .txt
-
-MEMORIA:
+Apuntes para MEMORIA:
   - posar en la memoria que he posat el indicador de si la pelicula esta en cartelera, tambe dir que els clientes normal no ho veuen
   - advertencia de posar mal una foto en add film
   - parlar de alrt dialog
@@ -15,3 +12,4 @@ MEMORIA:
   - colores corporativos
     - <color name="teal_200">#FF03DAC5</color>
     - <color name="navy">#070090</color>
+  - com se descarga la entrada y que se veu
