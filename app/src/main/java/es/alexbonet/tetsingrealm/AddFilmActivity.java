@@ -74,7 +74,7 @@ public class AddFilmActivity extends AppCompatActivity {
                     builder.setTitle("Confirma los campos");
                     builder.setMessage("Titulo: " + titulo +"\n" +
                             "Duración: " + duraci + "\n" +
-                            "Edad mñinima: " + edamin + "\n"
+                            "Edad míninima recomendada: " + edamin + "\n"
                     );
                     // Add the buttons
                     builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {

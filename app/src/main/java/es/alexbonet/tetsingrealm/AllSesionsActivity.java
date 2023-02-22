@@ -90,9 +90,7 @@ public class AllSesionsActivity extends AppCompatActivity implements View.OnClic
                 int posi = recyclerView.getChildAdapterPosition(view);
                 c.deleteSesion(connect, sesionList.get(posi).getId_sesion());
                 Toast.makeText(AllSesionsActivity.this, "ELIMINANDO", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),AllSesionsActivity.class);
-                intent.putExtra("user",username);
-                startActivity(intent);
+                geSionRVAdapter.notifyItemRemoved(posi);
             }
         });
         builder.setNegativeButton("CANCELAR",null);

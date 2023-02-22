@@ -15,7 +15,7 @@ public class DataBase {
     public Realm conectar(Context context){
         if (con == null ) {
             Realm.init(context);
-            String name = "nomDb6";
+            String name = "cineDB";
             RealmConfiguration config = new RealmConfiguration.Builder()
                     .schemaVersion(1)
                     .deleteRealmIfMigrationNeeded() //

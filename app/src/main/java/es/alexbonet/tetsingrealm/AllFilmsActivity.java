@@ -80,7 +80,7 @@ public class AllFilmsActivity extends AppCompatActivity implements View.OnClickL
         recyclerView.setAdapter(filmsRvAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        textView.setText("HAY " + filmsRvAdapter.getItemCount() + " PELICULAS EN TOTAL \n MANTEN PULSADO PARA ELIMINAR" );
+        textView.setText("HAY " + filmsRvAdapter.getItemCount() + " PELICULAS EN TOTAL \n DESLIZA HACIA LA IZQUIERDA PARA ELIMINAR" );
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //DESLIZAR PARA ELIMINAR

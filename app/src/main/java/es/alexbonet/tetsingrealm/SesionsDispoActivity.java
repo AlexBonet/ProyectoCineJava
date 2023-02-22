@@ -59,9 +59,9 @@ public class SesionsDispoActivity extends AppCompatActivity implements View.OnCl
         peli = getIntent().getExtras().getString("film");
         tvtitulo.setText(peli);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            tvdia.setText("SESIONSE DE HOY " + LocalDate.now());
+            tvdia.setText("SESIONES DE HOY " + LocalDate.now());
         } else {
-            tvdia.setText("SESIONSE DE HOY");
+            tvdia.setText("SESIONES DE HOY");
 
         }
 
